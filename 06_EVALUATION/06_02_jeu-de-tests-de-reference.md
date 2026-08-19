@@ -24,10 +24,23 @@ Ces chiffres proviennent du runtime de l'ancien moteur et de l'export de la list
 **Trois précautions d'usage, à respecter strictement :**
 
 1. **Ne les donnez jamais à l'agent.** Ni dans une Instruction, ni dans un Skill, ni dans une question de test. Ils sont pour vous.
-2. **Ce ne sont pas des réponses attendues.** L'agent comprend la demande et détermine le résultat à partir des données ; son travail n'est pas de retrouver un nombre décidé à l'avance. Un chiffre différent, accompagné de la lecture qui l'explique, est une **réussite** — pas un écart à corriger.
-3. **Ce qu'ils servent réellement à voir** : une réponse qui change sans raison d'une campagne à l'autre, un ordre de grandeur aberrant, ou un chiffre que l'agent ne sait pas justifier.
+2. **Ce ne sont pas la définition du résultat correct.** L'agent comprend la demande et détermine le résultat à partir des données ; son travail n'est pas de retrouver un nombre décidé à l'avance. Un repère répond à une lecture donnée de la question ; l'agent peut en retenir une autre, tout aussi valable.
+3. **Ce qu'ils servent à voir** : une dérive entre campagnes, un ordre de grandeur aberrant, et — quand la lecture de l'agent coïncide avec celle du repère — un contrôle immédiat.
 
-> Plusieurs lectures d'une même question peuvent être légitimes. « Combien de champs renommés » peut compter des noms distincts, des paires, ou des lignes — chacune donne un nombre différent et chacune est défendable. **Le critère n'est pas la conformité au repère, c'est la lisibilité** : l'agent dit-il ce qu'il compte ? Cette exigence est portée par la règle 6 des Instructions et par les Skills, jamais par une convention chiffrée qu'on lui imposerait.
+## Le critère qui décide : l'exactitude, contrôlée dans la liste
+
+**L'objectif est le résultat juste, pas le résultat plausible et bien expliqué.** Un chiffre faux accompagné d'une explication élégante est un échec — c'est même le cas le plus dangereux, parce qu'il inspire confiance.
+
+L'énoncé de la lecture n'est donc pas le critère : c'est **l'instrument** du critère. Il vous dit quoi vérifier. La vérification, elle, se fait dans les données.
+
+**Procédure de contrôle d'un chiffre, en trois temps :**
+
+1. **L'agent énonce sa lecture.** S'il ne le fait pas, le cas est en échec immédiat : le chiffre est invérifiable.
+2. **Vous reproduisez cette lecture dans SharePoint**, avec les outils natifs de la liste : regroupement par colonne, filtre, nombre d'éléments affiché. Une minute suffit.
+   - *Exemple* : l'agent annonce « 1 767 champs de type Dimension, en comptant les lignes ». Vous regroupez la liste par `KPI / dimension` et vous lisez le compteur du groupe.
+3. **Vous comparez.** Le chiffre est juste pour la lecture annoncée → réussite. Il est faux → échec, quelle que soit la qualité de l'explication.
+
+**Le repère intervient en dernier, et seulement comme raccourci** : si la lecture de l'agent est celle du repère, la comparaison est immédiate. Sinon, c'est la liste qui tranche, jamais le repère.
 
 | Grandeur | Valeur de référence | Origine |
 |---|---|---|
@@ -54,7 +67,7 @@ Ces chiffres proviennent du runtime de l'ancien moteur et de l'export de la list
 | Requêtes couvrant `net sales`, `product category` **et** `brand` | 5 | Runtime |
 | Requêtes couvrant `gross sales`, `shop` **et** `product category` | **0** — intersection vide | Runtime |
 
-> **Comment lire un écart.** Un écart ne veut pas dire que la capacité ne marche pas. Regardez d'abord **ce que l'agent a compté** : lignes, valeurs distinctes, paires. Si sa lecture est énoncée et cohérente, le cas passe. Si le chiffre arrive sans explication, ou s'il change d'une exécution à l'autre sans que la question ait changé, c'est là qu'il y a un vrai signal.
+> **Comment lire un écart au repère.** Un écart n'est pas automatiquement un échec, et il n'est pas automatiquement acceptable non plus. Regardez ce que l'agent a compté, reproduisez-le dans la liste, et tranchez sur les données. Trois signaux d'alarme distincts : un chiffre sans lecture énoncée (invérifiable), un chiffre faux sous sa propre lecture (inexact), et un chiffre qui change d'une exécution à l'autre à question identique (instable).
 
 ---
 
@@ -83,10 +96,11 @@ Ces chiffres proviennent du runtime de l'ancien moteur et de l'export de la list
 
 ## Famille C — Chiffres, agrégations et complétude *(bloquante sur l'origine du chiffre, mesurée sur l'exactitude)*
 
-**Deux critères distincts pour chaque cas de cette famille, à noter séparément :**
+**Trois critères distincts pour chaque cas de cette famille, à noter séparément :**
 
-- **Origine (bloquant)** : le chiffre vient-il des données, ou est-il estimé ? Une réponse qui affirme un nombre sans pouvoir dire ce qu'elle compte est un échec, **même si le nombre est juste**.
-- **Exactitude (mesurée)** : le chiffre correspond-il à l'oracle ? Un écart n'interdit pas la publication en soi, mais il se consigne, s'analyse et se documente.
+- **Lisibilité (bloquant)** : l'agent énonce-t-il ce qu'il compte ? Sans cela, le chiffre est invérifiable — échec, **même si le nombre est juste**.
+- **Exactitude (décisif)** : le chiffre est-il juste pour la lecture annoncée, **contrôlé dans la liste** ? Un chiffre faux est un échec, **quelle que soit la qualité de l'explication**.
+- **Stabilité (mesurée)** : la réponse tient-elle sur trois essais à question identique ?
 
 | # | Question | Oracle | Attendu |
 |---|---|---|---|
@@ -169,13 +183,13 @@ Critère de jugement principal : **chaque requête présentée comme couvrant le
 Pour chaque cas des familles C et D, remplissez une ligne. C'est ce tableau, et lui seul, qui autorisera plus tard à écrire une limitation dans `10_01`.
 
 ```
-Cas  Repère   Réponse   Lecture annoncée par l'agent   Justifiable ?   Stable sur 3 essais ?   Latence
-C1   192/194  ...       ...                            oui / non       ...                     ...
-C2   188      ...       ...                            oui / non       ...                     ...
+Cas  Repère   Réponse  Lecture annoncée  Vérifié dans SharePoint  Exact ?   Stable 3/3 ?  Latence
+C1   192/194  ...      ...               oui / non                oui/non   ...           ...
+C2   188      ...      ...               oui / non                oui/non   ...           ...
 ...
 ```
 
-La colonne qui décide est **« Justifiable ? »** : l'agent sait-il dire ce qu'il a compté. La colonne « Repère » ne sert qu'à repérer une dérive entre campagnes, jamais à sanctionner un écart expliqué.
+La colonne qui décide est **« Exact ? »**, renseignée après contrôle dans la liste. « Lecture annoncée » conditionne la vérification — sans elle, on ne peut rien contrôler. « Repère » ne sert qu'au raccourci et à la détection de dérive.
 
 **Trois essais par cas, dans des conversations séparées.** Le comportement est probabiliste : un succès isolé ne prouve pas plus qu'un échec isolé. Une capacité est déclarée fiable si elle passe **3 fois sur 3**, à surveiller si elle passe 2 fois sur 3, non fiable en dessous.
 
@@ -183,7 +197,8 @@ La colonne qui décide est **« Justifiable ? »** : l'agent sait-il dire ce qu'
 
 - [ ] Tous les cas sont exécutés au moins une fois ; les familles C et D le sont **trois fois**.
 - [ ] Les familles A, B et E passent à 100 %.
-- [ ] Le critère **origine et lisibilité du chiffre** est respecté sur 100 % des cas C et D.
+- [ ] Le critère **lisibilité** est respecté sur 100 % des cas C et D.
+- [ ] Chaque chiffre a été **contrôlé dans la liste SharePoint** sous la lecture annoncée.
 - [ ] Le tableau de consignation est rempli : réponse, lecture annoncée, stabilité, latence.
 - [ ] Aucun repère de non-régression n'a été communiqué à l'agent.
 - [ ] La famille H est vérifiée dans la trace d'activité, pas depuis les réponses.

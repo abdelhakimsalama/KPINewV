@@ -65,14 +65,15 @@ Work out the answer from the data, and make your reading explicit.
 "How many fields were renamed?" can be read in more than one way, and the readings give different numbers: distinct former MyBI field names, distinct (former name, current name) pairs, or rows in the source. Each row is one (query, field) pair, so the same field repeats across queries.
 
 1. Determine the reading that best matches what the user asked, from the wording of their question and the shape of the data.
-2. State the reading you used, in one short sentence, so the number is interpretable. For example: counting distinct former MyBI field names.
-3. When the wording is genuinely ambiguous and the readings would give materially different numbers, either give the reading you chose and say so, or ask one clarifying question. Do not present one reading as if it were the only one.
-4. If you cannot establish the figure reliably, say so and give what you could establish.
+2. Establish the figure over the whole of the list data for that reading. Do not derive it from the rows you happened to retrieve or list: those are a sample of the answer, not the answer.
+3. State the reading you used, in one short sentence, so the number is interpretable. For example: counting distinct former MyBI field names. Stating it is what makes the figure checkable; it does not excuse a wrong figure.
+4. When the wording is genuinely ambiguous and the readings would give materially different numbers, either give the reading you chose and say so, or ask one clarifying question. Do not present one reading as if it were the only one.
+5. If you cannot establish the figure reliably, say so and give what you could establish.
 
 ## Never
 
 - Never estimate a number, and never extrapolate one from the rows you happened to see.
-- Never give a figure without being able to say what it counts.
+- Never give a figure without being able to say what it counts, and never let the explanation stand in for the accuracy of the number.
 - Never translate or correct an official label on either side of the mapping.
 - Never infer a renaming from a resemblance between two names. Only a row in "KPIDictionary" establishes a mapping.
 ```
@@ -104,12 +105,13 @@ Le critère de jugement est donc la **lisibilité du chiffre**, pas sa conformit
 
 | Ce que répond l'agent | Verdict |
 |---|---|
-| Un chiffre **et** la lecture retenue (« noms MyBI distincts », « paires », « lignes ») | **Réussite** — même si le nombre diffère du repère de non-régression : c'est une autre lecture, elle est légitime dès lors qu'elle est énoncée |
-| Un chiffre **sans** dire ce qu'il compte | **Échec** — c'est exactement l'erreur de l'ancien agent |
-| Une estimation, ou un chiffre extrapolé | **Échec** |
+| Un chiffre **juste pour la lecture énoncée**, contrôlé dans la liste | **Réussite** — que le nombre coïncide ou non avec le repère, puisque le repère répond peut-être à une autre lecture |
+| Un chiffre **faux** pour la lecture qu'il annonce | **Échec** — l'explication ne rachète pas l'inexactitude |
+| Un chiffre **sans** dire ce qu'il compte | **Échec** — invérifiable, et c'est exactement l'erreur de l'ancien agent |
+| Une estimation, ou un chiffre extrapolé des lignes affichées | **Échec** |
 | Un refus motivé, quand la donnée ne permet pas d'établir le chiffre | Acceptable — à consigner et à re-mesurer |
 
-Notez la valeur obtenue et la lecture annoncée : c'est ce couple qui sert de repère de non-régression pour les campagnes suivantes.
+**Comment contrôler** : ouvrez la liste dans SharePoint et reproduisez la lecture annoncée avec les outils natifs — regroupement par colonne, filtre, affichage du nombre d'éléments. C'est le contrôle de référence, et il prend une minute.
 
 ## Ajustements courants
 

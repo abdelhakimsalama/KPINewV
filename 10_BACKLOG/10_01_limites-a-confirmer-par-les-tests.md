@@ -44,9 +44,9 @@ C'est la contrepartie exacte du principe de non-disqualification de `06_01` : on
 |---|---|---|---|---|---|---|---|
 | *(à remplir à l'étape 06)* | | | | | | | |
 
-**Rappel du barème** (`06_03`) : 3/3 = fiable · 2/3 = à surveiller · < 2/3 après ajustements = non fiable, et **seulement alors** la ligne devient une limitation à annoncer.
+**Rappel du barème** (`06_03`) : lisible **et exact** 3/3 = fiable · 2/3 = à surveiller · < 2/3 après ajustements = non fiable, et **seulement alors** la ligne devient une limitation à annoncer. L'exactitude se contrôle dans la liste SharePoint, pas contre le repère.
 
-**Ce qu'une ligne doit contenir pour être recevable :** la question exacte, la valeur de référence, ce que l'agent a répondu à chaque essai, ce que vous avez tenté pour corriger (règle, Skill, modèle), et la date. Une limitation sans ces éléments n'est pas une limitation, c'est une impression.
+**Ce qu'une ligne doit contenir pour être recevable :** la question exacte, la lecture annoncée par l'agent, ce qu'il a répondu à chaque essai, le résultat du contrôle dans la liste, ce que vous avez tenté pour corriger (règle, Skill, modèle), et la date. Une limitation sans ces éléments n'est pas une limitation, c'est une impression.
 
 ---
 

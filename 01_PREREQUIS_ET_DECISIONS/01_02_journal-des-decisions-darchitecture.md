@@ -39,7 +39,7 @@
 
 **Motif.** Les listes SharePoint utilisées comme source de Knowledge dans la nouvelle expérience prennent en charge les **requêtes analytiques et d'agrégation** sur les données structurées de la liste, y compris les questions de type « combien » **[OFFICIEL, préversion — [Add SharePoint lists](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists)]**. Retirer ces cas d'usage par précaution reviendrait à reproduire une limitation de l'ancienne architecture dans la nouvelle, alors même que la plateforme a comblé l'écart.
 
-**La frontière qui reste, elle, est absolue.** Un chiffre vient des données de la liste, ou il n'est pas donné. Jamais d'estimation, jamais d'extrapolation depuis un échantillon, jamais un nombre « plausible ». C'est la règle 6 des Instructions, et c'est elle qui protège l'utilisateur — pas une interdiction générale de compter.
+**L'objectif reste le résultat juste.** L'agent comprend la demande, interroge les données et rend le bon chiffre. Deux règles encadrent cela : il n'estime jamais et n'extrapole jamais depuis les lignes affichées ; et il énonce la lecture retenue, ce qui rend son résultat **contrôlable**. La transparence est l'instrument de la vérification, pas un substitut à l'exactitude : un chiffre faux bien expliqué reste un échec, et c'est le cas le plus dangereux car il inspire confiance.
 
 **Ce que dit Microsoft sur la méthode.** Les bonnes pratiques de la page officielle demandent explicitement d'*« exécuter des évaluations et valider vos requêtes avant le déploiement en production »* **[OFFICIEL]**. C'est exactement la démarche de l'étape 06.
 
@@ -49,7 +49,7 @@
 |---|---|
 | La fonctionnalité est en **préversion** | Le comportement peut évoluer ; rejouez la suite de tests régulièrement |
 | Les questions portant sur **la totalité** d'une grande liste peuvent être limitées en débit ou très lentes **[OFFICIEL]** | Les décomptes globaux sont les cas les plus à risque : ce sont ceux que l'étape 06 mesure en priorité |
-| Un modèle de langage prédit, il ne calcule pas | D'où la règle 6, et d'où la vérification par valeurs de référence plutôt que par confiance |
+| Un modèle de langage prédit, il ne calcule pas | D'où le contrôle systématique de chaque chiffre **dans la liste** à l'étape 06, plutôt qu'un jugement sur la vraisemblance |
 
 **Ce qui rouvrirait la décision.** Des tests réels, documentés, montrant qu'un type de question analytique n'est pas fiable. À ce moment-là — et à ce moment-là seulement — la limitation est écrite dans `10_01` avec ses preuves.
 

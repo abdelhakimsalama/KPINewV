@@ -16,9 +16,11 @@
 | **A — Exactitude et verbatim** | **100 %** | Un libellé modifié est introuvable dans SAC : la réponse devient inutilisable |
 | **B — Non-invention** | **100 %** | Une seule invention suffit à disqualifier un dictionnaire de référence |
 | **C — Chiffres** *(critère origine)* | **100 %** | Un chiffre que l'agent ne peut pas justifier est indétectable pour l'utilisateur |
-| **C — Chiffres** *(critère lisibilité)* | **100 %** | Un chiffre dont l'agent ne peut pas dire ce qu'il compte n'est pas interprétable |
+| **C — Chiffres** *(critère lisibilité)* | **100 %** | Un chiffre dont l'agent ne dit pas ce qu'il compte est invérifiable |
+| **C — Chiffres** *(critère exactitude)* | **100 %**, contrôlé dans la liste | Un chiffre faux est faux, quelle que soit la qualité de l'explication |
 | **D — Croisements** *(critère preuve)* | **100 %** | Une couverture affirmée sans champ cité n'est pas vérifiable |
-| **D — Croisements** *(critère stabilité)* | **Mesuré, pas seuillé** | Voir la règle de décision analytique ci-dessous |
+| **D — Croisements** *(critère exactitude)* | **100 %**, contrôlé dans la liste | Idem |
+| **C et D** *(critère stabilité)* | **Mesuré, pas seuillé** | Voir la règle de décision analytique ci-dessous |
 | **E — Ambiguïté** | **100 %** | Trancher au hasard entre deux champs sans rapport, c'est se tromper une fois sur deux avec assurance |
 | **F — Vocabulaire métier** | ≥ 80 % | Une résolution manquée dégrade le confort, pas la véracité |
 | **G — Langue** | ≥ 90 % | Une réponse dans la mauvaise langue gêne ; elle ne trompe pas |
@@ -31,20 +33,24 @@
 
 Les familles C et D ne se jugent pas comme les autres, parce qu'on y mesure deux choses différentes.
 
-**Le critère d'origine et de preuve est bloquant, sans exception.** Un chiffre que l'agent ne peut pas justifier, ou une couverture affirmée sans champ cité, interdit la publication. C'est la garantie qui remplace celle qu'apportait l'ancien moteur.
+Trois critères, dans cet ordre. Ils ne sont pas interchangeables.
 
-**Le second critère est la stabilité, et il décide du périmètre annoncé, pas de la publication.** On ne juge pas la conformité à un chiffre décidé d'avance : l'agent comprend la demande et détermine le résultat à partir des données, et plusieurs lectures d'une même question peuvent être également valables.
+**1. Lisibilité — bloquant.** L'agent énonce ce qu'il compte, et cite les champs qui prouvent une couverture. Sans cela, rien n'est vérifiable, et le cas est en échec immédiat.
 
-| Résultat mesuré sur 3 essais | Décision |
+**2. Exactitude — décisif.** Le chiffre est juste **pour la lecture que l'agent a annoncée**, contrôlé dans la liste SharePoint selon la procédure de `06_02`. **Un chiffre faux est un échec, quelle que soit la qualité de l'explication.** C'est le point à ne jamais relâcher : un résultat plausible et bien argumenté mais inexact est le pire cas de figure, parce qu'il inspire confiance.
+
+**3. Stabilité — classant.** La réponse tient-elle sur trois essais à question identique ? C'est ce critère, une fois les deux premiers acquis, qui décide de ce qu'on annonce aux utilisateurs.
+
+| Résultat sur 3 essais | Décision |
 |---|---|
-| Réponse **justifiable et stable** 3 fois sur 3, même si le chiffre diffère du repère | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
-| Justifiable et stable **2 fois sur 3**, ou lecture qui varie sans que la question change | La capacité est **à surveiller**. Elle reste active ; le cas revient à chaque campagne |
+| Lisible **et exact** 3 fois sur 3 | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
+| Lisible et exact **2 fois sur 3**, ou lecture qui varie sans que la question change | La capacité est **à surveiller**. Elle reste active ; le cas revient à chaque campagne |
 | **Moins de 2 fois sur 3**, après ajustement des règles et du Skill | La capacité est **non fiable sur ce cas**. On l'écrit dans `10_01` **avec les preuves** — et seulement à ce moment-là |
 
-Deux précisions qui évitent les faux verdicts :
+Deux précisions qui évitent les faux verdicts, dans les deux sens :
 
-- **Un écart au repère de non-régression n'est pas un échec** s'il s'explique par une autre lecture de la question, énoncée par l'agent. Le repère sert à détecter une dérive, pas à imposer une réponse.
-- **Une variation d'une exécution à l'autre, à question identique, est un vrai signal** — c'est elle qui distingue une capacité fiable d'une capacité chanceuse.
+- **Un écart au repère n'est pas en soi un échec** : le repère répond à une lecture donnée, l'agent peut légitimement en retenir une autre. C'est le contrôle dans la liste qui tranche, jamais le repère.
+- **Une explication convaincante ne rachète jamais un chiffre faux.** Si le contrôle dans la liste infirme le nombre, le cas est en échec — même si la lecture annoncée était claire et le raisonnement cohérent.
 
 Aucune capacité ne descend au troisième niveau sans être passée par les deux premiers. C'est la contrepartie du principe de non-disqualification : on ne retire rien sans mesure, mais on n'annonce rien non plus sans mesure.
 
@@ -55,7 +61,8 @@ Ne corrigez jamais un échec en ajoutant du texte dans les Instructions par réf
 | L'échec porte sur | Regardez d'abord | Puis |
 |---|---|---|
 | Une règle globale (invention, origine du chiffre, verbatim, langue) | `04_01` — la règle a-t-elle été collée en entier ? | Reformulez la règle concernée, sans en ajouter une nouvelle |
-| Un chiffre non justifié | La règle 6 de `04_01` et le Skill concerné — l'agent doit dire ce qu'il compte | Renforcez l'exigence d'énoncer la lecture, sans imposer laquelle |
+| Un chiffre non justifié | La règle 6 de `04_01` et le Skill concerné | Renforcez l'exigence d'énoncer la lecture, sans imposer laquelle |
+| Un chiffre **faux** sous sa propre lecture | La règle 7 de `04_01` — le plus souvent, l'agent a extrapolé depuis les lignes affichées au lieu d'interroger l'ensemble des données | Renforcez ce point dans le Skill concerné, puis re-mesurez |
 | Une lecture qui change à question identique | La stabilité, pas la définition | Consignez les trois essais ; c'est le signal le plus utile pour classer la capacité |
 | Un décompte refusé | La règle 5 de `04_01` — elle **autorise** les décomptes issus des données | Vérifiez qu'elle a été collée ; ne la durcissez pas |
 | Un décompte très lent ou sans réponse | Le périmètre de la question : les questions portant sur toute la liste peuvent être limitées en débit **[OFFICIEL]** | Consignez la latence ; c'est un candidat pour `10_01` si c'est reproductible |
@@ -106,9 +113,11 @@ Skills en place : 5 / oui-non
 Résultats par famille
   A Exactitude ............................ ... %   (exigé 100 %)
   B Non-invention ....................... ... %   (exigé 100 %)
-  C Chiffres — origine et lisibilité .... ... %   (exigé 100 %)
+  C Chiffres — lisibilité ............... ... %   (exigé 100 %)
+  C Chiffres — exactitude vérifiée ...... ... %   (exigé 100 %, contrôle dans la liste)
   C Chiffres — stabilité sur 3 essais ... ... / 9 cas   (mesuré)
   D Croisements — preuve ................ ... %   (exigé 100 %)
+  D Croisements — exactitude vérifiée ... ... %   (exigé 100 %, contrôle dans la liste)
   D Croisements — stabilité sur 3 essais  ... / 5 cas   (mesuré)
   E Ambiguïté ........................... ... %   (exigé 100 %)
   F Vocabulaire ......................... ... %   (exigé 80 %)
@@ -134,7 +143,8 @@ Signé :
 
 - [ ] La suite complète a été exécutée au moins une fois.
 - [ ] Les familles A, B et E sont à 100 %.
-- [ ] Les critères **origine et lisibilité** (C) et **preuve** (D) sont à 100 %.
+- [ ] Les critères **lisibilité** (C) et **preuve** (D) sont à 100 %.
+- [ ] Le critère **exactitude vérifiée** est à 100 % sur C et D, contrôle fait dans la liste.
 - [ ] Chaque capacité analytique est classée fiable / à surveiller / non fiable, **sur mesure**.
 - [ ] Les autres familles atteignent leur seuil.
 - [ ] La fiche de décision est remplie et conservée dans le dépôt.

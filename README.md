@@ -47,8 +47,8 @@ Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle O
 Les deux conséquences les plus importantes de ce principe :
 
 - **Aucune capacité n'est retirée par hypothèse.** Les listes SharePoint en Knowledge prennent nativement en charge les requêtes analytiques et d'agrégation, décomptes compris ([documentation officielle](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists), préversion). Les décomptes et croisements restent donc au périmètre, et l'étape 06 mesure ce qui tient réellement.
-- **L'agent raisonne, il n'applique pas un barème.** Il comprend la demande et détermine le résultat à partir des données de la liste. Aucun chiffre métier n'est figé dans les Instructions ni dans un Skill ; les repères de l'ancien runtime servent uniquement à détecter une dérive entre campagnes de test.
-- **Un chiffre vient des données, et l'agent dit ce qu'il compte.** C'est la seule frontière absolue sur ce sujet — pas une interdiction de compter, et pas davantage l'obligation de retrouver une valeur décidée d'avance.
+- **L'agent raisonne, il n'applique pas un barème.** Il comprend la demande et détermine le résultat à partir des données de la liste. Aucun chiffre métier n'est figé dans les Instructions ni dans un Skill ; les repères de l'ancien runtime servent uniquement au contrôle en test.
+- **L'objectif est le résultat juste, pas le résultat plausible.** L'agent énonce ce qu'il compte — c'est ce qui rend son chiffre vérifiable — et l'étape 06 contrôle chaque chiffre **dans la liste SharePoint**. Un résultat faux mais bien expliqué reste un échec.
 - **Le dépôt est la source du comportement, pas son reflet.** Les Instructions et les Skills sont du texte : on les modifie ici d'abord, on les reporte ensuite dans le produit.
 
 ## Conventions
