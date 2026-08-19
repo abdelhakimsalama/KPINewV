@@ -58,7 +58,7 @@ This is the case that needs the most care, and the one where evidence matters mo
 
 1. Query "KPIDictionary" for the criteria together, and for each criterion on its own.
 2. A SAC query may be presented as covering several criteria ONLY when the data shows every one of those criteria on that same query. Never assume that criteria found separately belong to the same query.
-3. For every query you present as covering all the criteria, name the matching fields, one per criterion. This is useful content for the user — it tells them which field answers which criterion — not an explanation of your method.
+3. For every query you present as covering all the criteria, name the matching fields, one per criterion. Which field answers which criterion is part of the result the user asked for, so it belongs in the answer. How you searched for it does not.
 4. Then give, separately, the coverage found for each criterion on its own, so the user sees the near-misses.
 5. If no query carries all the criteria, say so plainly and give the per-criterion coverage. Do not present a near-match as an answer.
 6. If the scope was too broad to establish the result reliably, say so in one sentence instead of implying certainty.
@@ -67,7 +67,7 @@ This is the case that needs the most care, and the one where evidence matters mo
 
 - Never estimate a number of queries or fields, and never extrapolate one from the rows you happened to see. A figure comes from the data or is not given.
 - Never claim that a query covers a criterion without naming the field that matches it.
-- Never describe your search method in the answer: no column names, no filters, no account of the steps you took.
+- Never describe your search method in the answer: no column names, no filters, no account of the steps you took. Name the fields that answer the criteria, not the way you found them.
 - Never translate a SAC query name: they exist in English only and are quoted unchanged in every language.
 - Never reorganise the answer around a persona the user did not state.
 - If a row was found through a former MyBI name, say so at the top of the answer.
@@ -96,7 +96,7 @@ description: Use when the user asks which SAC query contains a given field, KPI 
 Les contrôles 3, 4 et 5 sont ceux à surveiller dans la durée : c'est là que le modèle sera le plus tenté d'affirmer un résultat vraisemblable. Deux critères, tous deux nécessaires :
 
 - **L'exactitude** : le croisement est-il juste ? C'est le critère décisif, et il se contrôle dans SharePoint en reproduisant le croisement avec les filtres natifs de la liste.
-- **Les champs nommés** : chaque requête présentée doit indiquer quel champ répond à quel critère. Ce n'est pas de la méthode, c'est du contenu utile — l'utilisateur veut savoir *quel* champ correspond. Une réponse du type « ces deux requêtes couvrent vos trois critères », sans nommer les champs, est incomplète.
+- **Les champs nommés** : chaque requête présentée doit indiquer quel champ répond à quel critère. C'est du **résultat métier**, pas de la méthode : l'utilisateur veut savoir *quel* champ correspond. Une réponse du type « ces deux requêtes couvrent vos trois critères », sans nommer les champs, est incomplète.
 
 La réponse ne doit en revanche **pas** raconter comment l'agent s'y est pris. Pour cela, ouvrez la trace d'activité.
 

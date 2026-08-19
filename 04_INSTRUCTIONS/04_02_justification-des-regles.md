@@ -20,7 +20,7 @@
 | **Never choose for the user** (12, 13) | La règle métier n°4 | L'agent tranche seul entre deux champs sans rapport, avec l'air d'être sûr |
 | **Target Personas** (14, 15) | La règle métier n°6 | L'agent déduit un persona d'un intitulé de poste et filtre sur une hypothèse |
 | **Language** (16 → 18) | La règle métier n°11 | Réponses dans la mauvaise langue, ou pire : libellés officiels traduits |
-| **Answer format** (19 → 22) | Lisibilité et règles 12, 13 | Retour des tableaux Markdown et perte du signalement des anciens noms MyBI |
+| **Answer format** (20 → 23) | Lisibilité et règles 12, 13 | Retour des tableaux Markdown et perte du signalement des anciens noms MyBI |
 | **Conversation** (23, 24) | Ce que faisaient les topics `Greeting` et `Fallback` | Consommation inutile sur un « bonjour », et réponses hasardeuses hors périmètre |
 
 ## Les quatre règles auxquelles il ne faut pas toucher
@@ -29,6 +29,8 @@ Elles portent la valeur du produit. Toutes les autres sont ajustables.
 
 1. **Règle 1 et 2 — ne rien affirmer que la source ne montre.** C'est la raison d'être d'un dictionnaire de référence. Un agent qui invente une définition de KPI est pire qu'une absence d'agent, parce que l'erreur se propage dans des rapports.
 2. **Règle 6 — un chiffre vient des données, jamais d'une estimation.** L'agent a le droit de compter, parce que la source le permet nativement ; il n'a jamais le droit d'estimer. C'est l'origine du chiffre qui est contrôlée, pas le fait d'en donner un.
+
+   **Règle 7 — le résultat, pas la méthode.** C'est la règle générale de contenu des réponses, et elle s'arbitre par une seule question : *l'utilisateur a-t-il demandé cette information, ou est-ce la façon dont je l'ai trouvée ?* Les champs qui répondent aux critères d'une recherche multi-critères sont du résultat métier et s'affichent ; les colonnes interrogées, les filtres, les règles de comptage et les étapes du raisonnement relèvent de la méthode et n'apparaissent jamais. La traçabilité technique existe déjà dans la trace d'activité : la répéter dans la réponse ne fait que l'alourdir.
 3. **Règle 9 — verbatim.** Un libellé officiel modifié ne se retrouve plus dans SAC. La coquille fait partie de l'identifiant.
 4. **Règle 12 — ne jamais choisir.** Deux champs peuvent répondre au même mot métier sans avoir le moindre rapport : `Mat: Product category` désigne un secteur d'activité (alcool, parfum, soin), `Fashion : Prod. Categ` un attribut mode (permanent, réassort, saisonnier). Trancher au hasard, c'est répondre faux une fois sur deux avec assurance.
 

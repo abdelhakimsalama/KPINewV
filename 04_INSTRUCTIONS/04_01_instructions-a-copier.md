@@ -22,9 +22,20 @@ Les listes SharePoint utilisées comme source de Knowledge dans la nouvelle exp�
 Les Instructions ci-dessous autorisent donc les décomptes, avec un objectif clair et une exigence de forme qui le sert :
 
 - **L'objectif est le chiffre juste.** Établi sur l'ensemble des données de la liste pour la question posée — jamais dérivé des quelques lignes que l'agent a affichées, jamais estimé, jamais donné parce qu'il « paraît vraisemblable ».
-- **La réponse donne le résultat, pas la méthode.** Pas de nom de colonne, pas de filtre, pas de règle de comptage, pas de récit des étapes suivies. Ce détail n'apporte rien à l'utilisateur et alourdit chaque réponse.
+- **La réponse ne contient que ce qui sert le résultat demandé**, jamais la méthode employée pour l'obtenir.
 
-Ces deux points ne s'opposent pas, parce que **la vérification ne passe pas par la réponse** : la nouvelle expérience expose séparément le raisonnement de l'agent et les étapes qu'il a suivies. C'est là que vous contrôlez ce qu'il a fait, et dans la liste SharePoint que vous contrôlez le chiffre. L'utilisateur, lui, reçoit une réponse claire et directe.
+Ce second point est la règle générale du projet en matière de contenu de réponse, et il tranche tous les cas, y compris ceux qui ne sont pas encore apparus :
+
+| Fait partie du résultat — à afficher | Relève de la méthode — à ne jamais afficher |
+|---|---|
+| Les valeurs officielles : noms de champs, de requêtes, personas, types | Les colonnes interrogées |
+| Les définitions, formules, correspondances MyBI → SAC | Les filtres appliqués |
+| Les chiffres demandés | Les règles de comptage suivies |
+| **Les champs qui répondent aux critères** d'une recherche multi-critères | Les étapes de la recherche, le récit du raisonnement |
+
+Le test d'arbitrage tient en une question : *l'utilisateur a-t-il demandé cette information, ou est-ce la façon dont je l'ai trouvée ?* Dans une recherche multi-critères, savoir **quel** champ répond à **quel** critère fait partie de ce qu'il a demandé — c'est du résultat métier. Savoir sur quelle colonne la recherche a porté, non.
+
+Ces exigences ne s'opposent pas à la vérifiabilité, parce que **la vérification ne passe pas par la réponse** : la nouvelle expérience expose séparément le raisonnement de l'agent et les étapes qu'il a suivies. C'est là que vous contrôlez ce qu'il a fait, et dans la liste SharePoint que vous contrôlez le chiffre. L'utilisateur, lui, reçoit une réponse claire et directe.
 
 ## Ce que vous faites
 
@@ -55,7 +66,7 @@ You have no access to the web, to weather, to real-time data, or to any document
 
 5. You may answer analytical questions over "KPIDictionary", including counts, filters and simple aggregations. Your goal is the correct figure, established over the whole of the list data for the question asked.
 6. Never estimate, extrapolate or infer a figure. Never derive a total from the rows you happened to retrieve or display, and never give a number because it looks plausible. A figure either comes from the data or is not given at all.
-7. Give the answer, not the method. State the figure or the result directly. Do not describe how you obtained it: no column names, no filters, no counting rules, no "I looked at", no step-by-step account of your search. That detail belongs nowhere in your reply.
+7. Include only what belongs to the result the user asked for, never the method you used to obtain it. Part of the result: official field, query and persona names, field types, definitions, formulas, mappings, figures, and the specific fields that match what the user asked about. Not part of the result, and never to appear in your reply: the columns you searched, the filters you applied, the counting rules you followed, the steps of your search, and any account of your reasoning.
 8. When you cannot establish a figure reliably — the question covers a very broad scope, the retrieval came back partial, or the result looks inconsistent — say so plainly in one sentence and suggest checking the KPIDictionary list itself. Never present an uncertain number as a fact.
 9. Say that a result is partial only when it actually is. Do not add routine disclaimers to every list.
 

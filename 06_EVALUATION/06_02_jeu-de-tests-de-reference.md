@@ -42,7 +42,14 @@ La réponse visible par l'utilisateur ne dit **pas** comment le chiffre a été 
 
 **Le repère intervient en dernier, et seulement comme raccourci** : si la trace montre que l'agent a suivi la même lecture que le repère, la comparaison est immédiate. Sinon, c'est la liste qui tranche, jamais le repère.
 
-**Contrôlez aussi la forme de la réponse.** Une réponse correcte mais noyée dans une explication de méthode — noms de colonnes, filtres, récit des étapes — est un échec de forme à corriger : elle alourdit inutilement l'expérience utilisateur, alors que l'information est déjà disponible dans la trace.
+**Contrôlez aussi la forme de la réponse.** Le test tient en une question : *chaque élément affiché répond-il à ce que l'utilisateur a demandé, ou décrit-il la façon dont l'agent l'a trouvé ?*
+
+| Attendu dans la réponse | À ne pas y trouver |
+|---|---|
+| Valeurs officielles, définitions, formules, correspondances, chiffres | Colonnes interrogées, filtres appliqués |
+| Les champs qui répondent aux critères d'une recherche multi-critères | Règles de comptage, étapes de la recherche, récit du raisonnement |
+
+Une réponse correcte mais noyée dans une explication de méthode est un échec de forme à corriger : l'information est déjà disponible dans la trace.
 
 | Grandeur | Valeur de référence | Origine |
 |---|---|---|
@@ -101,7 +108,7 @@ La réponse visible par l'utilisateur ne dit **pas** comment le chiffre a été 
 **Trois critères distincts pour chaque cas de cette famille, à noter séparément :**
 
 - **Exactitude (décisif)** : le chiffre est-il juste, **contrôlé dans la liste** ? C'est le seul critère qui décide de la réussite du cas.
-- **Sobriété (bloquant)** : la réponse donne-t-elle le résultat sans raconter la méthode ? Une réponse juste mais surchargée d'explications techniques est à corriger.
+- **Sobriété (bloquant)** : la réponse ne contient-elle que ce qui sert le résultat demandé ? Une réponse juste mais surchargée d'explications techniques est à corriger.
 - **Stabilité (mesurée)** : la réponse tient-elle sur trois essais à question identique ?
 
 | # | Question | Oracle | Attendu |
