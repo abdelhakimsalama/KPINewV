@@ -16,9 +16,9 @@
 | **A — Exactitude et verbatim** | **100 %** | Un libellé modifié est introuvable dans SAC : la réponse devient inutilisable |
 | **B — Non-invention** | **100 %** | Une seule invention suffit à disqualifier un dictionnaire de référence |
 | **C — Chiffres** *(critère origine)* | **100 %** | Un chiffre que l'agent ne peut pas justifier est indétectable pour l'utilisateur |
-| **C — Chiffres** *(critère exactitude)* | **Mesuré, pas seuillé** | Voir la règle de décision analytique ci-dessous |
+| **C — Chiffres** *(critère lisibilité)* | **100 %** | Un chiffre dont l'agent ne peut pas dire ce qu'il compte n'est pas interprétable |
 | **D — Croisements** *(critère preuve)* | **100 %** | Une couverture affirmée sans champ cité n'est pas vérifiable |
-| **D — Croisements** *(critère exactitude)* | **Mesuré, pas seuillé** | Idem |
+| **D — Croisements** *(critère stabilité)* | **Mesuré, pas seuillé** | Voir la règle de décision analytique ci-dessous |
 | **E — Ambiguïté** | **100 %** | Trancher au hasard entre deux champs sans rapport, c'est se tromper une fois sur deux avec assurance |
 | **F — Vocabulaire métier** | ≥ 80 % | Une résolution manquée dégrade le confort, pas la véracité |
 | **G — Langue** | ≥ 90 % | Une réponse dans la mauvaise langue gêne ; elle ne trompe pas |
@@ -33,13 +33,18 @@ Les familles C et D ne se jugent pas comme les autres, parce qu'on y mesure deux
 
 **Le critère d'origine et de preuve est bloquant, sans exception.** Un chiffre que l'agent ne peut pas justifier, ou une couverture affirmée sans champ cité, interdit la publication. C'est la garantie qui remplace celle qu'apportait l'ancien moteur.
 
-**Le critère d'exactitude, lui, décide du périmètre annoncé, pas de la publication :**
+**Le second critère est la stabilité, et il décide du périmètre annoncé, pas de la publication.** On ne juge pas la conformité à un chiffre décidé d'avance : l'agent comprend la demande et détermine le résultat à partir des données, et plusieurs lectures d'une même question peuvent être également valables.
 
-| Résultat mesuré | Décision |
+| Résultat mesuré sur 3 essais | Décision |
 |---|---|
-| Exact **3 fois sur 3** contre l'oracle | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
-| Exact **2 fois sur 3**, ou écart faible et explicable | La capacité est **à surveiller**. Elle reste active ; l'agent la présente avec sa réserve habituelle ; le cas revient à chaque campagne |
-| Exact **moins de 2 fois sur 3**, après ajustement des règles et du Skill | La capacité est **non fiable sur ce cas**. On l'écrit dans `10_01` **avec les preuves** — et seulement à ce moment-là |
+| Réponse **justifiable et stable** 3 fois sur 3, même si le chiffre diffère du repère | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
+| Justifiable et stable **2 fois sur 3**, ou lecture qui varie sans que la question change | La capacité est **à surveiller**. Elle reste active ; le cas revient à chaque campagne |
+| **Moins de 2 fois sur 3**, après ajustement des règles et du Skill | La capacité est **non fiable sur ce cas**. On l'écrit dans `10_01` **avec les preuves** — et seulement à ce moment-là |
+
+Deux précisions qui évitent les faux verdicts :
+
+- **Un écart au repère de non-régression n'est pas un échec** s'il s'explique par une autre lecture de la question, énoncée par l'agent. Le repère sert à détecter une dérive, pas à imposer une réponse.
+- **Une variation d'une exécution à l'autre, à question identique, est un vrai signal** — c'est elle qui distingue une capacité fiable d'une capacité chanceuse.
 
 Aucune capacité ne descend au troisième niveau sans être passée par les deux premiers. C'est la contrepartie du principe de non-disqualification : on ne retire rien sans mesure, mais on n'annonce rien non plus sans mesure.
 
@@ -50,7 +55,8 @@ Ne corrigez jamais un échec en ajoutant du texte dans les Instructions par réf
 | L'échec porte sur | Regardez d'abord | Puis |
 |---|---|---|
 | Une règle globale (invention, origine du chiffre, verbatim, langue) | `04_01` — la règle a-t-elle été collée en entier ? | Reformulez la règle concernée, sans en ajouter une nouvelle |
-| Un décompte faux | **Ce que l'agent a compté** — lignes plutôt que valeurs distinctes est l'erreur n° 1, et c'est celle que faisait l'ancien moteur | Précisez la définition dans le Skill concerné, puis re-mesurez |
+| Un chiffre non justifié | La règle 6 de `04_01` et le Skill concerné — l'agent doit dire ce qu'il compte | Renforcez l'exigence d'énoncer la lecture, sans imposer laquelle |
+| Une lecture qui change à question identique | La stabilité, pas la définition | Consignez les trois essais ; c'est le signal le plus utile pour classer la capacité |
 | Un décompte refusé | La règle 5 de `04_01` — elle **autorise** les décomptes issus des données | Vérifiez qu'elle a été collée ; ne la durcissez pas |
 | Un décompte très lent ou sans réponse | Le périmètre de la question : les questions portant sur toute la liste peuvent être limitées en débit **[OFFICIEL]** | Consignez la latence ; c'est un candidat pour `10_01` si c'est reproductible |
 | Une procédure (format, ordre, mise en forme) | Le Skill concerné en `05_0x` | Ajustez le Skill, pas les Instructions |
@@ -100,10 +106,10 @@ Skills en place : 5 / oui-non
 Résultats par famille
   A Exactitude ............................ ... %   (exigé 100 %)
   B Non-invention ....................... ... %   (exigé 100 %)
-  C Chiffres — origine .................. ... %   (exigé 100 %)
-  C Chiffres — exactitude vs oracle ..... ... / 9 cas   (mesuré)
+  C Chiffres — origine et lisibilité .... ... %   (exigé 100 %)
+  C Chiffres — stabilité sur 3 essais ... ... / 9 cas   (mesuré)
   D Croisements — preuve ................ ... %   (exigé 100 %)
-  D Croisements — exactitude vs oracle .. ... / 5 cas   (mesuré)
+  D Croisements — stabilité sur 3 essais  ... / 5 cas   (mesuré)
   E Ambiguïté ........................... ... %   (exigé 100 %)
   F Vocabulaire ......................... ... %   (exigé 80 %)
   G Langue .............................. ... %   (exigé 90 %)
@@ -128,7 +134,7 @@ Signé :
 
 - [ ] La suite complète a été exécutée au moins une fois.
 - [ ] Les familles A, B et E sont à 100 %.
-- [ ] Les critères **origine** (C) et **preuve** (D) sont à 100 %.
+- [ ] Les critères **origine et lisibilité** (C) et **preuve** (D) sont à 100 %.
 - [ ] Chaque capacité analytique est classée fiable / à surveiller / non fiable, **sur mesure**.
 - [ ] Les autres familles atteignent leur seuil.
 - [ ] La fiche de décision est remplie et conservée dans le dépôt.

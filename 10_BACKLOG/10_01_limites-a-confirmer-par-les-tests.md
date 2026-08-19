@@ -50,13 +50,13 @@ C'est la contrepartie exacte du principe de non-disqualification de `06_01` : on
 
 ---
 
-## Ce qui a été mesuré côté ancien agent, et qui sert d'oracle
+## Ce qui a été mesuré côté ancien agent, et qui sert de repère
 
-Ces valeurs viennent du runtime de l'ancien moteur. Elles ne décrivent pas ce que le nouvel agent **doit** faire : elles décrivent la réalité des données, et permettent de noter objectivement.
+Ces valeurs viennent du runtime de l'ancien moteur. Elles ne décrivent pas ce que le nouvel agent **doit** répondre : ce sont des repères de non-régression, utiles pour repérer une dérive entre campagnes. Elles n'entrent jamais dans les Instructions ni dans un Skill.
 
 Elles sont listées en tête de `06_02`. Deux méritent une attention particulière :
 
-- **192 renommages distincts**, et non 202. L'ancien agent annonçait 202 — un chiffre faux, qu'aucun utilisateur ne pouvait détecter. Si le nouvel agent trouve 192, c'est une amélioration mesurable ; s'il trouve 202, il reproduit l'erreur d'un comptage de lignes au lieu de valeurs distinctes, et c'est corrigeable dans le Skill.
+- **Les renommages** : 192 ou 194 selon qu'on compte les renommages ou les anciens noms distincts. Les deux lectures sont valables, et ce n'est pas au dépôt de trancher : l'agent détermine le résultat depuis les données et **dit ce qu'il compte**. Ce qui était fautif chez l'ancien agent, ce n'était pas son chiffre (202) mais son silence sur ce qu'il comptait.
 - **0 requête** couvrant `gross sales` + `shop` + `product category`. Un cas d'intersection vide est le meilleur test d'honnêteté qui soit : un agent qui « trouve » quelque chose ici invente.
 
 ---
@@ -72,7 +72,6 @@ Elles sont dans les données. Aucun agent ne les corrigera, et elles ne relèven
 | Un même champ peut porter plusieurs libellés français officiels | Aucune règle canonique n'existe ; le sujet reste ouvert côté métier |
 | Un libellé français peut recouvrir deux champs anglais distincts | L'agent doit montrer les deux — **meilleur** que l'ancien comportement, qui n'avertissait pas |
 | Des définitions génériques partagées par de nombreux champs | Formellement présentes, faiblement informatives |
-| Écart 194 anciens noms distincts / 192 renommages | Question de définition du « renommage », à trancher avec le métier avant de noter C1 |
 
 ---
 
@@ -83,7 +82,7 @@ L'équilibre n'est pas à sens unique. Ces défauts ouverts de l'ancienne archit
 | Ancien défaut | Statut |
 |---|---|
 | Définitions non transmises en correspondance partielle | **Disparu** — plus de projection à deux niveaux |
-| `totalPairs` annonçait 202 au lieu de 192 | **À vérifier, et corrigeable** — c'est le cas C1 |
+| `totalPairs` annonçait 202 sans dire ce qu'il comptait | **Traité par la règle** — l'agent doit désormais énoncer sa lecture (cas C1) |
 | Plafond de 5 000 éléments franchi sans signalement | **Disparu** — plus de lecture plafonnée |
 | Instructions désynchronisées du contrat du moteur | **Disparu** — plus de contrat à synchroniser |
 | Budget d'instructions saturé (7 996 / 8 000) | **Disparu** — les procédures vivent dans les Skills |

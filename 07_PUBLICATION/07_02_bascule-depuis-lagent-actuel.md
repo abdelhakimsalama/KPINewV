@@ -42,7 +42,7 @@ Le critère 5 est celui qu'on oublie et qui fait revenir un projet en arrière t
 2. **Celles classées à surveiller** (2 sur 3) — nommez-les, avec la réserve qui les accompagne.
 3. **Celles déclarées non fiables**, s'il y en a — nommez-les, avec les preuves, et dites que la liste `KPIDictionary` fait foi sur ces points.
 
-**Un point à porter en réunion dans tous les cas :** l'ancien agent annonçait « 202 champs renommés ». Le chiffre était **faux** — la valeur réelle est 192 — et aucun utilisateur ne pouvait s'en apercevoir. Que le nouvel agent trouve 192, ou qu'il dise ne pas pouvoir établir le chiffre, les deux valent mieux qu'un faux affirmé. Ce que le projet garantit désormais, ce n'est pas l'absence d'erreur : c'est qu'un chiffre vient des données et que l'agent dit ce qu'il compte.
+**Un point à porter en réunion dans tous les cas :** l'ancien agent annonçait « 202 champs renommés » sans jamais dire ce qu'il comptait, et aucun utilisateur ne pouvait vérifier. Le nouvel agent détermine le résultat depuis les données et **énonce sa lecture** — noms distincts, paires, lignes. Ce que le projet garantit désormais, ce n'est pas un chiffre unique et définitif : c'est qu'un chiffre vient des données et qu'on sait ce qu'il mesure.
 
 Si le métier juge qu'une capacité classée non fiable est indispensable, **ne basculez pas** : allez lire `10_02`, qui décrit ce qu'il faudrait ajouter et ce que cela coûte.
 

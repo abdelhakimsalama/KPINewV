@@ -63,7 +63,7 @@ Trois choses en découlent, à tenir ensemble :
 
 1. **L'agent a le droit de compter** — à partir des données de la liste, et en disant ce qu'il compte.
 2. **Il n'a jamais le droit d'estimer.** Un chiffre vient des données ou n'est pas donné. C'est la seule frontière absolue sur ce sujet.
-3. **La fiabilité réelle se mesure.** L'étape 06 confronte les réponses analytiques à des valeurs de référence connues (192 renommages, 188 `Primary KPI`, 2 requêtes couvrant `duty free` et `duty paid`…). Une capacité n'est déclarée non fiable qu'après avoir échoué de façon reproductible — et elle est alors inscrite dans `10_BACKLOG` **avec ses preuves**.
+3. **La fiabilité réelle se mesure.** L'étape 06 vérifie que l'agent sait dire ce qu'il compte, et que sa réponse est stable d'un essai à l'autre. Des repères issus de l'ancien runtime servent à détecter une dérive — jamais à imposer une réponse : plusieurs lectures d'une même question peuvent être valables, et l'agent détermine le résultat depuis les données. Une capacité n'est déclarée non fiable qu'après avoir échoué de façon reproductible, et elle est alors inscrite dans `10_BACKLOG` **avec ses preuves**.
 
 Deux réserves documentées à garder en tête : la fonctionnalité est en **préversion**, et les questions portant sur la totalité d'une grande liste peuvent être limitées en débit ou très lentes **[OFFICIEL]**.
 

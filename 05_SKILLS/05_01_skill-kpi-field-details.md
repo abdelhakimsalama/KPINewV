@@ -88,7 +88,7 @@ Six contrôles, dans **Preview**, trace d'activité ouverte à chaque fois.
 
 | # | Question | Le Skill doit-il se charger ? | Ce que la réponse doit montrer |
 |---|---|---|---|
-| 1 | `What does "Plant: Plant" mean?` | **Oui** | La définition officielle, le type `Dimension`, les requêtes porteuses (valeur de référence : **33**) |
+| 1 | `What does "Plant: Plant" mean?` | **Oui** | La définition officielle, le type `Dimension`, les requêtes porteuses *(repère de non-régression : 33 — pour vous, jamais communiqué à l'agent)* |
 | 2 | `Que signifie "Mat: Product category" ?` | **Oui** | Réponse en français, libellé anglais cité tel quel, définition mentionnant alcool / parfum / soin |
 | 3 | `Quelle est la formule de "Downstream service rate in quantity (Argon)" ?` | **Oui** | Formule **en bloc de code**, verbatim, sauts de ligne préservés |
 | 4 | `What is "% Backorders"?` | **Oui** | Définition anglaise ; si la définition française manque, il le **dit** au lieu de la produire |

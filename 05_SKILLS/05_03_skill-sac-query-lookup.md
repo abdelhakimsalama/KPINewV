@@ -87,9 +87,9 @@ description: Use when the user asks which SAC query contains a given field, KPI 
 |---|---|---|---|
 | 1 | `Which queries contain "Gross Sales"?` | **Oui** | Une liste dédoublonnée, persona en ligne, caractère complet ou partiel indiqué |
 | 2 | `Que contient la requête "Price catalog" ?` | **Oui** | Des champs avec leur type, groupés ; un décompte par type est acceptable s'il vient des données |
-| 3 | `Quelles requêtes contiennent à la fois duty free et duty paid ?` | **Oui** | Les requêtes couvrant les deux, **avec les champs cités en preuve**. Valeur de référence : **2** requêtes — `Mix sales, stocks, prices` et `Price catalog` |
+| 3 | `Quelles requêtes contiennent à la fois duty free et duty paid ?` | **Oui** | Les requêtes couvrant les deux, **avec les champs cités en preuve** *(repère : 2 requêtes — `Mix sales, stocks, prices` et `Price catalog`)* |
 | 4 | `Which queries have gross sales, shop and product category?` | **Oui** | Cas où l'ancien moteur ne trouvait **aucune** requête couvrant les trois : l'agent doit le dire, puis donner la couverture par critère |
-| 5 | `Combien de champs dans "Detailed analysis of sales" ?` | **Oui** | Un chiffre issu des données, avec l'énoncé de ce qui est compté. Valeur de référence : **184** lignes |
+| 5 | `Combien de champs dans "Detailed analysis of sales" ?` | **Oui** | Un chiffre issu des données, avec l'énoncé de ce qui est compté *(repère : 184 lignes ; « champs » et « lignes » peuvent légitimement différer)* |
 | 6 | `Que signifie "Gross Sales" ?` | **Non** → `kpi-field-details` | Sinon, resserrez les deux descriptions |
 
 Les contrôles 3, 4 et 5 sont ceux à surveiller dans la durée : c'est là que le modèle sera le plus tenté d'affirmer un résultat plausible. Le critère de jugement est la **preuve**, pas seulement l'exactitude — une formulation comme « ces deux requêtes couvrent vos trois critères » sans les champs cités en preuve est un échec, même si le résultat se trouve être exact. À l'inverse, un résultat partiellement inexact mais accompagné de ses preuves est un cas exploitable : vous voyez immédiatement ce que l'agent a réellement trouvé.

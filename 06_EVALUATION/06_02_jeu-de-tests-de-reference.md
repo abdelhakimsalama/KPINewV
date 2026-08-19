@@ -17,11 +17,17 @@ Chaque cas porte une **famille**, une **question**, et un **attendu** rédigé c
 
 ---
 
-## Les valeurs de référence (oracle)
+## Les repères de non-régression
 
-Ces chiffres proviennent du runtime de l'ancien moteur déterministe et de l'export de la liste. Ils constituent la vérité de terrain contre laquelle les réponses analytiques du nouvel agent se mesurent.
+Ces chiffres proviennent du runtime de l'ancien moteur et de l'export de la liste. Ils servent à **détecter une dérive** d'une campagne à l'autre.
 
-**Ne donnez jamais ces valeurs à l'agent** : elles servent à noter, pas à guider.
+**Trois précautions d'usage, à respecter strictement :**
+
+1. **Ne les donnez jamais à l'agent.** Ni dans une Instruction, ni dans un Skill, ni dans une question de test. Ils sont pour vous.
+2. **Ce ne sont pas des réponses attendues.** L'agent comprend la demande et détermine le résultat à partir des données ; son travail n'est pas de retrouver un nombre décidé à l'avance. Un chiffre différent, accompagné de la lecture qui l'explique, est une **réussite** — pas un écart à corriger.
+3. **Ce qu'ils servent réellement à voir** : une réponse qui change sans raison d'une campagne à l'autre, un ordre de grandeur aberrant, ou un chiffre que l'agent ne sait pas justifier.
+
+> Plusieurs lectures d'une même question peuvent être légitimes. « Combien de champs renommés » peut compter des noms distincts, des paires, ou des lignes — chacune donne un nombre différent et chacune est défendable. **Le critère n'est pas la conformité au repère, c'est la lisibilité** : l'agent dit-il ce qu'il compte ? Cette exigence est portée par la règle 6 des Instructions et par les Skills, jamais par une convention chiffrée qu'on lui imposerait.
 
 | Grandeur | Valeur de référence | Origine |
 |---|---|---|
@@ -32,8 +38,7 @@ Ces chiffres proviennent du runtime de l'ancien moteur déterministe et de l'exp
 | Champs de type `Dimension` | 1 767 | Export |
 | Champs de type `Derived KPI` | 509 | Export |
 | Champs de type `Primary KPI` | 188 | Export |
-| Renommages MyBI distincts | **192** | Correction du défaut connu (l'ancien agent annonçait 202) |
-| Anciens noms MyBI distincts | 194 | Export |
+| Renommages MyBI, selon la lecture retenue | 192 ou 194 selon qu'on compte les renommages ou les anciens noms distincts — **les deux lectures sont valables** | Export |
 | Lignes marquées `new` | 99 | Export |
 | Lignes sans définition anglaise | 119 | Export |
 | Lignes sans définition française | 616 | Export |
@@ -49,7 +54,7 @@ Ces chiffres proviennent du runtime de l'ancien moteur déterministe et de l'exp
 | Requêtes couvrant `net sales`, `product category` **et** `brand` | 5 | Runtime |
 | Requêtes couvrant `gross sales`, `shop` **et** `product category` | **0** — intersection vide | Runtime |
 
-> **Deux précautions de lecture.** L'écart entre 194 anciens noms distincts et 192 renommages tient à la définition retenue du « renommage » : à trancher avec le métier avant de noter ce cas. Et un écart de l'agent sur un décompte ne veut pas automatiquement dire que la capacité ne marche pas : vérifiez d'abord ce qu'il a compté — lignes plutôt que valeurs distinctes est l'erreur la plus fréquente, et c'est exactement celle que faisait l'ancien moteur.
+> **Comment lire un écart.** Un écart ne veut pas dire que la capacité ne marche pas. Regardez d'abord **ce que l'agent a compté** : lignes, valeurs distinctes, paires. Si sa lecture est énoncée et cohérente, le cas passe. Si le chiffre arrive sans explication, ou s'il change d'une exécution à l'autre sans que la question ait changé, c'est là qu'il y a un vrai signal.
 
 ---
 
@@ -85,7 +90,7 @@ Ces chiffres proviennent du runtime de l'ancien moteur déterministe et de l'exp
 
 | # | Question | Oracle | Attendu |
 |---|---|---|---|
-| C1 | `Combien de champs ont été renommés de MyBI vers SAC ?` | **192** | Un chiffre issu des données, **avec l'énoncé de ce qui est compté** |
+| C1 | `Combien de champs ont été renommés de MyBI vers SAC ?` | 192 / 194 selon la lecture | Un chiffre issu des données, **avec l'énoncé de ce qui est compté** |
 | C2 | `Combien de champs sont de type Primary KPI ?` | **188** | Idem |
 | C3 | `Combien de champs sont de type Dimension ?` | **1 767** | Idem — cas le plus large, donc le plus exposé au débit et à la latence |
 | C4 | `Combien de requêtes SAC pour le persona Supply ?` | **17** | Idem |
@@ -164,11 +169,13 @@ Critère de jugement principal : **chaque requête présentée comme couvrant le
 Pour chaque cas des familles C et D, remplissez une ligne. C'est ce tableau, et lui seul, qui autorisera plus tard à écrire une limitation dans `10_01`.
 
 ```
-Cas   Oracle   Réponse agent   Origine du chiffre OK ?   Écart   Reproductible ?   Latence
-C1    192      ...             oui / non                 ...     3 essais          ...
-C2    188      ...             oui / non                 ...     3 essais          ...
+Cas  Repère   Réponse   Lecture annoncée par l'agent   Justifiable ?   Stable sur 3 essais ?   Latence
+C1   192/194  ...       ...                            oui / non       ...                     ...
+C2   188      ...       ...                            oui / non       ...                     ...
 ...
 ```
+
+La colonne qui décide est **« Justifiable ? »** : l'agent sait-il dire ce qu'il a compté. La colonne « Repère » ne sert qu'à repérer une dérive entre campagnes, jamais à sanctionner un écart expliqué.
 
 **Trois essais par cas, dans des conversations séparées.** Le comportement est probabiliste : un succès isolé ne prouve pas plus qu'un échec isolé. Une capacité est déclarée fiable si elle passe **3 fois sur 3**, à surveiller si elle passe 2 fois sur 3, non fiable en dessous.
 
@@ -176,6 +183,7 @@ C2    188      ...             oui / non                 ...     3 essais       
 
 - [ ] Tous les cas sont exécutés au moins une fois ; les familles C et D le sont **trois fois**.
 - [ ] Les familles A, B et E passent à 100 %.
-- [ ] Le critère **origine du chiffre** est respecté sur 100 % des cas C et D.
-- [ ] Le tableau de consignation analytique est rempli, écarts et latences compris.
+- [ ] Le critère **origine et lisibilité du chiffre** est respecté sur 100 % des cas C et D.
+- [ ] Le tableau de consignation est rempli : réponse, lecture annoncée, stabilité, latence.
+- [ ] Aucun repère de non-régression n'a été communiqué à l'agent.
 - [ ] La famille H est vérifiée dans la trace d'activité, pas depuis les réponses.

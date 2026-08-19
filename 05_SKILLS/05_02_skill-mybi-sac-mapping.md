@@ -58,21 +58,23 @@ An empty MyBI column is not the same as "new". It means the correspondence is no
 - The same MyBI name mapping to several SAC fields: show every mapping. Never pick one.
 - The same SAC field appearing on several queries: give the mapping once, then list the queries you found.
 
-## Counting renamed fields
+## Answering "how many" about renamings
 
-The user may legitimately ask how many fields were renamed. Answer it from the data:
+Work out the answer from the data, and make your reading explicit.
 
-1. Count distinct former MyBI field names that map to a different SAC name. Distinct names, not rows: the same field repeats across queries, so counting rows would inflate the figure.
-2. Say what you counted, in one short sentence, so the user can tell what the number means. For example: distinct MyBI field names that have a different SAC name.
-3. Rows whose MyBI value is "new" or empty are NOT renamings and must be excluded from that count.
-4. If you cannot establish the figure reliably, say so and give what you could establish. Never estimate, and never present an uncertain number as a fact.
+"How many fields were renamed?" can be read in more than one way, and the readings give different numbers: distinct former MyBI field names, distinct (former name, current name) pairs, or rows in the source. Each row is one (query, field) pair, so the same field repeats across queries.
+
+1. Determine the reading that best matches what the user asked, from the wording of their question and the shape of the data.
+2. State the reading you used, in one short sentence, so the number is interpretable. For example: counting distinct former MyBI field names.
+3. When the wording is genuinely ambiguous and the readings would give materially different numbers, either give the reading you chose and say so, or ask one clarifying question. Do not present one reading as if it were the only one.
+4. If you cannot establish the figure reliably, say so and give what you could establish.
 
 ## Never
 
 - Never estimate a number, and never extrapolate one from the rows you happened to see.
+- Never give a figure without being able to say what it counts.
 - Never translate or correct an official label on either side of the mapping.
 - Never infer a renaming from a resemblance between two names. Only a row in "KPIDictionary" establishes a mapping.
-- Never count a row whose MyBI value is "new" or empty as a renaming.
 ```
 
 ## Le fichier `SKILL.md` complet
@@ -92,21 +94,22 @@ description: Use when the user asks how a MyBI field or report was renamed in SA
 |---|---|---|---|
 | 1 | `Comment s'appelait "Downstream service rate in quantity (Argon)" dans MyBI ?` | **Oui** | L'ancien nom `Service Rate (Quantity)`, et **les deux** libellés SAC |
 | 2 | `What is "Received (line)" called in MyBI?` | **Oui** | « nouveau champ, pas d'équivalent MyBI » — **jamais** le mot `New` présenté comme un nom |
-| 3 | `Combien de champs ont été renommés ?` | **Oui** | **Un chiffre issu des données**, avec l'énoncé de ce qui est compté. Valeur de référence : **192** noms MyBI distincts renommés. Un écart n'est pas éliminatoire ici, il est **mesuré** à l'étape 06 |
+| 3 | `Combien de champs ont été renommés ?` | **Oui** | **Un chiffre issu des données**, accompagné de la lecture retenue (« noms MyBI distincts », « paires », « lignes »…) |
 | 4 | `Quels champs ont été renommés ?` | **Oui** | Une liste, avec mention explicite du caractère complet ou partiel |
 | 5 | `Que signifie "Plant: Plant" ?` | **Non** → `kpi-field-details` | Sinon, resserrez la description |
 
-Le contrôle 3 est le plus instructif du projet. L'ancien agent répondait **202**, un chiffre faux — il comptait des quadruplets au lieu de renommages distincts. La bonne réponse est **192**.
+Le contrôle 3 est le plus instructif du projet. L'ancien agent répondait **202** sans jamais dire ce qu'il comptait ; le chiffre correspondait à des quadruplets, et personne ne pouvait s'en rendre compte. C'est ce défaut-là que le nouvel agent doit éviter — pas le fait de donner un nombre.
 
-Trois issues possibles, et chacune veut dire quelque chose :
+Le critère de jugement est donc la **lisibilité du chiffre**, pas sa conformité à une valeur imposée :
 
-| Ce que répond l'agent | Interprétation | Suite |
-|---|---|---|
-| **192**, en disant ce qu'il compte | La capacité analytique fonctionne sur ce cas | Consignez-le, et confirmez sur les autres décomptes de l'étape 06 |
-| Un autre chiffre | La requête analytique n'a pas la bonne définition du « renommage » | Précisez la section « Counting renamed fields » ci-dessus, puis re-mesurez |
-| Il refuse ou il estime | Soit la règle est trop restrictive, soit la capacité ne répond pas ici | Vérifiez d'abord les règles 5 à 7 des Instructions, puis documentez si le comportement persiste |
+| Ce que répond l'agent | Verdict |
+|---|---|
+| Un chiffre **et** la lecture retenue (« noms MyBI distincts », « paires », « lignes ») | **Réussite** — même si le nombre diffère du repère de non-régression : c'est une autre lecture, elle est légitime dès lors qu'elle est énoncée |
+| Un chiffre **sans** dire ce qu'il compte | **Échec** — c'est exactement l'erreur de l'ancien agent |
+| Une estimation, ou un chiffre extrapolé | **Échec** |
+| Un refus motivé, quand la donnée ne permet pas d'établir le chiffre | Acceptable — à consigner et à re-mesurer |
 
-Ce qui serait **éliminatoire**, c'est un chiffre présenté avec assurance sans que l'agent puisse dire d'où il vient.
+Notez la valeur obtenue et la lecture annoncée : c'est ce couple qui sert de repère de non-régression pour les campagnes suivantes.
 
 ## Ajustements courants
 
@@ -114,7 +117,7 @@ Ce qui serait **éliminatoire**, c'est un chiffre présenté avec assurance sans
 |---|---|
 | `New` présenté comme un nom de champ | La section « The literal value new » n'a pas été collée, ou la règle 10 des Instructions manque |
 | Un seul libellé SAC restitué | Renforcez le point 2 de « What the answer must contain » |
-| Un décompte manifestement faux | Précisez « Counting renamed fields » : le plus souvent, l'agent compte des lignes au lieu de noms distincts |
+| Un chiffre donné sans dire ce qu'il compte | Renforcez le point 2 de « Answering how many about renamings » |
 | L'agent refuse de compter | Vérifiez que la règle 5 des Instructions a bien été collée : elle **autorise** les décomptes issus des données |
 | Se charge sur les questions de définition | Renforcez le « Do NOT use » des deux descriptions concernées |
 
@@ -122,5 +125,5 @@ Ce qui serait **éliminatoire**, c'est un chiffre présenté avec assurance sans
 
 - [ ] Le Skill `mybi-sac-mapping` existe et est enregistré.
 - [ ] Le contrôle 2 ne présente jamais `New` comme un nom de champ.
-- [ ] **Le contrôle 3 produit un chiffre issu des données, et l'agent dit ce qu'il compte.** L'écart éventuel avec 192 est consigné pour l'étape 06.
+- [ ] **Le contrôle 3 produit un chiffre issu des données, et l'agent dit ce qu'il compte.** La valeur et la lecture annoncée sont consignées comme repère.
 - [ ] Le contrôle 5 ne charge pas ce Skill.

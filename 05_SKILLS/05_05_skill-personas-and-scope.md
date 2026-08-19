@@ -89,11 +89,11 @@ description: Use when the user asks which SAC queries are available for a Target
 
 | # | Question | Le Skill doit-il se charger ? | Ce que la réponse doit montrer |
 |---|---|---|---|
-| 1 | `Quelles requêtes sont pour le persona Supply ?` | **Oui** | Des requêtes réelles, caractère complet ou partiel indiqué. Valeur de référence : **17** requêtes |
+| 1 | `Quelles requêtes sont pour le persona Supply ?` | **Oui** | Des requêtes réelles, caractère complet ou partiel indiqué *(repère : 17 requêtes)* |
 | 2 | `À quel persona appartient "Price catalog" ?` | **Oui** | Le persona exact tel qu'il figure dans la source |
 | 3 | `Je suis supply planner, que puis-je consulter ?` | **Oui** | **Aucune** déduction vers `Supply`. L'agent demande le persona officiel parmi les six |
 | 4 | `What should a business analyst look at?` | **Oui** | Même conduite : pas de persona déduit d'un intitulé |
-| 5 | `Combien de requêtes pour Finance ?` | **Oui** | Un chiffre issu des données. Valeur de référence : **7** |
+| 5 | `Combien de requêtes pour Finance ?` | **Oui** | Un chiffre issu des données, avec sa lecture *(repère : 7)* |
 | 6 | `Que contient la requête "Price catalog" ?` | **Non** → `sac-query-lookup` | Sinon, resserrez les deux descriptions |
 
 Le contrôle 3 est le contrôle de référence : « supply planner » ressemble tellement à `Supply` que le modèle sera tenté de faire le lien. S'il filtre sur `Supply` sans avoir demandé, la règle est violée — reprenez la section « Job titles are not personas ».
