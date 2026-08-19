@@ -69,7 +69,7 @@ Le motif compte plus que le contenu du changement : dans un an, le diff dira **q
 
 **« L'agent respecte la règle 9 fois sur 10. »** C'est la variabilité normale d'un comportement probabiliste, pas un bug ponctuel. N'ajoutez surtout pas une règle supplémentaire : empiler dilue au lieu de stabiliser. Deux leviers, dans l'ordre — rendre la règle existante plus courte et plus explicite, puis changer de modèle et re-mesurer.
 
-**« Faut-il afficher telle information dans la réponse ? »** Posez la question d'arbitrage de la règle 7 : *l'utilisateur a-t-il demandé cette information, ou est-ce la façon dont l'agent l'a trouvée ?* Le champ qui répond à un critère de recherche est du résultat, il s'affiche. La colonne sur laquelle la recherche a porté est de la méthode, elle ne s'affiche pas. Cette question tranche seule la quasi-totalité des cas, sans qu'il faille ajouter une règle.
+**« Faut-il afficher telle information dans la réponse ? »** Posez la question d'arbitrage de la règle 7 : *l'utilisateur a-t-il demandé cette information, ou est-ce la façon dont l'agent l'a trouvée ?* Le champ qui répond à un critère de recherche est du résultat, il s'affiche. La colonne sur laquelle la recherche a porté est de la méthode, elle ne s'affiche pas. Et si l'utilisateur demande explicitement une justification, les entrées du dictionnaire qui l'établissent s'affichent aussi (règle 8) — c'est de la preuve, pas de la méthode. Ces deux questions tranchent seules la quasi-totalité des cas, sans qu'il faille ajouter une règle.
 
 **« Les utilisateurs demandent une fonction qui n'existe pas. »** Ne l'improvisez pas dans un Skill. Allez à `10_02` : les extensions possibles y sont décrites avec leur coût en complexité. Puis décidez consciemment — c'est-à-dire en écrivant la décision dans `01_02`.
 
@@ -80,7 +80,7 @@ Quel que soit le besoin exprimé, trois choses ne se négocient pas, sauf à ré
 1. **Ajouter une deuxième source de Knowledge** — l'origine d'une réponse deviendrait indécidable.
 2. **Autoriser l'agent à estimer un chiffre** — un nombre vient des données ou n'est pas donné. Compter depuis la liste est permis ; extrapoler ne l'est jamais.
 3. **Laisser l'agent choisir seul entre deux candidats** — c'est se tromper une fois sur deux avec assurance.
-4. **Faire raconter à l'agent sa méthode dans la réponse** — colonnes, filtres, étapes. Cette information existe déjà dans la trace d'activité ; la répéter alourdit chaque échange sans rien apporter à l'utilisateur.
+4. **Faire raconter à l'agent sa méthode interne dans la réponse** — colonnes, filtres, étapes. Cette information existe déjà dans la trace d'activité ; la répéter alourdit chaque échange sans rien apporter à l'utilisateur. *À ne pas confondre avec la justification métier* : si l'utilisateur demande sur quelle base une réponse a été donnée, citer les entrées du dictionnaire qui l'établissent est attendu (règle 8).
 
 Si l'une de ces trois interdictions devient réellement bloquante pour le métier, ce n'est plus une modification : c'est un changement d'architecture. Il se traite dans `10_02`.
 

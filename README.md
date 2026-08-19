@@ -26,7 +26,7 @@ Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle O
 | [`01_PREREQUIS_ET_DECISIONS`](01_PREREQUIS_ET_DECISIONS/) | Prérequis | Accès, licences, décisions d'architecture, répartition des règles |
 | [`02_CREATION_DE_LAGENT`](02_CREATION_DE_LAGENT/) | Création | Un agent qui répond, avec le bon modèle |
 | [`03_KNOWLEDGE_SHAREPOINT`](03_KNOWLEDGE_SHAREPOINT/) | Données | L'agent lit `KPIDictionary` en direct |
-| [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 24 règles globales, prêtes à copier |
+| [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 26 règles globales, prêtes à copier |
 | [`05_SKILLS`](05_SKILLS/) | Comportements situationnels | Les 5 Skills, chacun avec son `SKILL.md` complet |
 | [`06_EVALUATION`](06_EVALUATION/) | Qualité | 52 cas de test avec valeurs de référence, seuils, non-régression |
 | [`07_PUBLICATION`](07_PUBLICATION/) | Mise en service | L'agent publié dans Teams, bascule depuis l'ancien |
@@ -48,7 +48,7 @@ Les deux conséquences les plus importantes de ce principe :
 
 - **Aucune capacité n'est retirée par hypothèse.** Les listes SharePoint en Knowledge prennent nativement en charge les requêtes analytiques et d'agrégation, décomptes compris ([documentation officielle](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists), préversion). Les décomptes et croisements restent donc au périmètre, et l'étape 06 mesure ce qui tient réellement.
 - **L'agent raisonne, il n'applique pas un barème.** Il comprend la demande et détermine le résultat à partir des données de la liste. Aucun chiffre métier n'est figé dans les Instructions ni dans un Skill ; les repères de l'ancien runtime servent uniquement au contrôle en test.
-- **L'objectif est le résultat juste, dit simplement.** La réponse ne contient que ce qui sert le résultat demandé, jamais la méthode employée pour l'obtenir — les champs qui répondent aux critères s'affichent, les colonnes interrogées et les filtres non. La traçabilité technique existe déjà dans la trace d'activité. L'étape 06 s'appuie sur cette trace, puis contrôle chaque chiffre **dans la liste SharePoint** : un résultat faux reste un échec, quelle que soit la façon dont il est présenté.
+- **L'objectif est le résultat juste, dit simplement.** La réponse ne contient que ce qui sert le résultat demandé, jamais la méthode interne employée pour l'obtenir — les champs qui répondent aux critères s'affichent, les colonnes interrogées et les filtres non. Si l'utilisateur demande une justification, l'agent cite les entrées du dictionnaire qui l'établissent : c'est de la preuve métier, pas de la méthode. La traçabilité technique, elle, reste dans la trace d'activité, sur laquelle l'étape 06 s'appuie avant de contrôler chaque chiffre **dans la liste SharePoint**.
 - **Le dépôt est la source du comportement, pas son reflet.** Les Instructions et les Skills sont du texte : on les modifie ici d'abord, on les reporte ensuite dans le produit.
 
 ## Conventions

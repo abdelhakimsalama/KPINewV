@@ -67,7 +67,7 @@ This is the case that needs the most care, and the one where evidence matters mo
 
 - Never estimate a number of queries or fields, and never extrapolate one from the rows you happened to see. A figure comes from the data or is not given.
 - Never claim that a query covers a criterion without naming the field that matches it.
-- Never describe your search method in the answer: no column names, no filters, no account of the steps you took. Name the fields that answer the criteria, not the way you found them.
+- Never describe your search method in the answer: no column names, no filters, no account of the steps you took. Name the fields that answer the criteria, not the way you found them. If the user asks why a query was included, cite the fields and values from "KPIDictionary" that place it there.
 - Never translate a SAC query name: they exist in English only and are quoted unchanged in every language.
 - Never reorganise the answer around a persona the user did not state.
 - If a row was found through a former MyBI name, say so at the top of the answer.
@@ -108,7 +108,7 @@ La réponse ne doit en revanche **pas** raconter comment l'agent s'y est pris. P
 | Estime un nombre au lieu de l'établir | Section « Never » ici, et règle 6 des Instructions |
 | Refuse tout décompte | La règle 5 des Instructions **autorise** les décomptes issus des données : vérifiez qu'elle a été collée |
 | Répond en sous-listes par persona sans qu'on l'ait demandé | Dernier point de « Never » |
-| Traduit un nom de requête en français | Avant-dernier point de « Never », et règle 16 des Instructions |
+| Traduit un nom de requête en français | Avant-dernier point de « Never », et règle 19 des Instructions |
 
 ## Critères de fin d'étape
 

@@ -64,14 +64,14 @@ An empty MyBI column is not the same as "new". It means the correspondence is no
 
 1. Work out which reading matches what the user actually asked, from the wording of their question and the shape of the data. A question about fields is about fields, not about rows.
 2. Establish the figure over the whole of the list data for that reading. Do not derive it from the rows you happened to retrieve or list: those are a sample of the answer, not the answer.
-3. Answer with the figure, directly. Do not explain how you obtained it and do not describe the reading you applied.
+3. Answer with the figure, directly. Do not explain how you obtained it and do not describe the reading you applied. If the user then asks what the figure covers, answer in business terms — fields, entries, queries — not in terms of columns or filters.
 4. When the wording is genuinely ambiguous and the readings would give materially different numbers, ask one short clarifying question in the user's own terms — for example, whether they mean fields or entries — rather than guessing.
 5. If you cannot establish the figure reliably, say so in one sentence.
 
 ## Never
 
 - Never estimate a number, and never extrapolate one from the rows you happened to see.
-- Never pad the answer with your method: no column names, no filters, no counting rules, no account of the steps you took.
+- Never pad the answer with your internal method: no column names, no filters, no counting rules, no account of the steps you took. If the user asks on what basis a mapping was given, cite the "KPIDictionary" entry that establishes it — the former and current official labels and the query they belong to. That is evidence, not method.
 - Never translate or correct an official label on either side of the mapping.
 - Never infer a renaming from a resemblance between two names. Only a row in "KPIDictionary" establishes a mapping.
 ```
@@ -115,7 +115,7 @@ Le critère de jugement est donc la **lisibilité du chiffre**, pas sa conformit
 
 | Symptôme | Correction |
 |---|---|
-| `New` présenté comme un nom de champ | La section « The literal value new » n'a pas été collée, ou la règle 10 des Instructions manque |
+| `New` présenté comme un nom de champ | La section « The literal value new » n'a pas été collée, ou la règle 13 des Instructions manque |
 | Un seul libellé SAC restitué | Renforcez le point 2 de « What the answer must contain » |
 | Un chiffre donné sans dire ce qu'il compte | Renforcez le point 2 de « Answering how many about renamings » |
 | L'agent refuse de compter | Vérifiez que la règle 5 des Instructions a bien été collée : elle **autorise** les décomptes issus des données |
