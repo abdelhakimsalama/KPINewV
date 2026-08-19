@@ -1,22 +1,60 @@
-# Microsoft Copilot Studio — New Experience Expert Training
+# KPI Dictionary Assistant — Guide de développement pas à pas
 
-Expert-level training corpus and architecture guide for the **new Microsoft Copilot Studio agent experience** (agents powered by the GitHub Copilot harness, GA August 3, 2026).
+Documentation de référence pour construire l'agent **KPI Dictionary Assistant** dans la **nouvelle expérience Microsoft Copilot Studio** (harness GitHub Copilot).
 
-Produced 2026-08-19 from current primary sources: the official Microsoft Copilot Studio CAT blog (cloned at `microsoft/mcscatblog`, current through 2026-08-13) and current Microsoft Learn documentation (via web research; every claim in these documents is tagged by provenance).
+Lisez les dossiers dans l'ordre `00 → 10`. Chaque dossier est une étape, chaque fichier une tâche. Vous n'avez rien à reconstruire ni à chercher ailleurs : tout ce qui doit être collé dans Copilot Studio est fourni en entier, prêt à l'emploi.
 
-## Contents
+---
 
-| Path | What it is |
-| --- | --- |
-| [`copilot-studio-expert-guide.md`](copilot-studio-expert-guide.md) | **The final deliverable**: "Microsoft Copilot Studio New Experience — Expert Architecture Guide" (25 sections: mental model, components, orchestration, decision trees, migration strategy, anti-patterns, checklists, current limitations, sources) |
-| [`training-exercises/`](training-exercises/) | The required training exercise: 10 diverse fictional project architectures, each with a classic-style design, a new-native redesign, quantified simplification, determinism analysis, evaluation plan, and honest verdict |
-| [`research-notes/`](research-notes/) | 14 structured research notes underlying the guide, one per architectural area, with per-claim provenance tags |
+## L'architecture en une ligne
 
-## Provenance tags used throughout
+**Instructions + Knowledge + Skills.** Aucun outil, aucun flux Power Automate, aucun code, aucune Memory, aucun agent connecté.
 
-- `[OFFICIAL]` — documented Microsoft behavior (Microsoft Learn, message center, official repos)
-- `[CAT]` — Microsoft Copilot Studio CAT (Customer Advisory Team) guidance and observed behavior
-- `[INFERRED]` — architectural reasoning, not documented platform behavior
-- `[STATUS UNVERIFIED]` / `[ASSUMPTION]` — flagged uncertainty; verify against current docs before relying on it
+```
+Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle OpenAI/Microsoft
+   ├── INSTRUCTIONS ...... les règles vraies à chaque tour
+   ├── KNOWLEDGE (1) ..... la liste SharePoint « KPIDictionary », en direct
+   └── SKILLS (5) ........ kpi-field-details · mybi-sac-mapping · sac-query-lookup
+                           business-vocabulary-and-ambiguity · personas-and-scope
+```
 
-Copilot Studio evolves rapidly: **always re-verify availability, limits, and GA/preview status against current Microsoft documentation before using these documents for a production decision.**
+## Les étapes
+
+| Dossier | Étape | Ce que vous obtenez |
+|---|---|---|
+| [`00_LISEZ-MOI`](00_LISEZ-MOI/) | Cadrage | Le mode d'emploi, l'architecture cible, le glossaire |
+| [`01_PREREQUIS_ET_DECISIONS`](01_PREREQUIS_ET_DECISIONS/) | Prérequis | Accès, licences, décisions d'architecture, répartition des règles |
+| [`02_CREATION_DE_LAGENT`](02_CREATION_DE_LAGENT/) | Création | Un agent qui répond, avec le bon modèle |
+| [`03_KNOWLEDGE_SHAREPOINT`](03_KNOWLEDGE_SHAREPOINT/) | Données | L'agent lit `KPIDictionary` en direct |
+| [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 23 règles globales, prêtes à copier |
+| [`05_SKILLS`](05_SKILLS/) | Comportements situationnels | Les 5 Skills, chacun avec son `SKILL.md` complet |
+| [`06_EVALUATION`](06_EVALUATION/) | Qualité | 43 cas de test, seuils de publication, non-régression |
+| [`07_PUBLICATION`](07_PUBLICATION/) | Mise en service | L'agent publié dans Teams, bascule depuis l'ancien |
+| [`08_MONITORING_ET_COUTS`](08_MONITORING_ET_COUTS/) | Exploitation | Ce que fait l'agent, ce qu'il coûte |
+| [`09_ALM_ET_MAINTENANCE`](09_ALM_ET_MAINTENANCE/) | Durée de vie | Modifier une règle sans effet de bord |
+| [`10_BACKLOG`](10_BACKLOG/) | Lucidité | Ce que l'architecture ne fait pas, et quoi faire alors |
+
+## Les trois fichiers à lire en premier
+
+1. [`00_02_architecture-en-un-coup-doeil.md`](00_LISEZ-MOI/00_02_architecture-en-un-coup-doeil.md) — l'image complète de l'agent.
+2. [`01_02_journal-des-decisions-darchitecture.md`](01_PREREQUIS_ET_DECISIONS/01_02_journal-des-decisions-darchitecture.md) — pourquoi il a cette forme, et ce qui a été écarté.
+3. [`10_01_limites-assumees-et-cas-abandonnes.md`](10_BACKLOG/10_01_limites-assumees-et-cas-abandonnes.md) — ce qu'il ne fera pas, à faire valider par le métier **avant** la bascule.
+
+## Le principe directeur
+
+> On part toujours du plus simple et du plus natif. Un composant supplémentaire ne s'ajoute que si un besoin fonctionnel réel, constaté et documenté, ne peut pas être couvert autrement — et la justification s'écrit dans le journal des décisions.
+
+Les deux conséquences les plus importantes de ce principe :
+
+- **L'agent ne compte pas et ne promet jamais une liste complète.** Sans moteur de calcul, tout chiffre serait une estimation présentée comme un fait. L'agent montre ce qu'il a trouvé et signale ce qui n'est pas garanti.
+- **Le dépôt est la source du comportement, pas son reflet.** Les Instructions et les Skills sont du texte : on les modifie ici d'abord, on les reporte ensuite dans le produit.
+
+## Conventions
+
+- Les fichiers sont en **français** ; tout ce qui se colle **dans** Copilot Studio est en **anglais**.
+- **[OFFICIEL]** = documenté par Microsoft · **[CHOIX PROJET]** = décision de ce projet · **[À VÉRIFIER]** = à confirmer dans votre environnement.
+- Copilot Studio évolue vite : vérifiez les limites et les statuts de préversion dans la documentation courante avant toute décision de production.
+
+## Documentation de référence
+
+Le dossier [`_reference-copilot-studio/`](_reference-copilot-studio/) contient le corpus d'expertise sur la nouvelle expérience Copilot Studio qui a servi à concevoir cette architecture : le guide d'architecture complet, 10 études de cas et 14 notes de recherche. Il n'est pas nécessaire à l'exécution de ce guide.
