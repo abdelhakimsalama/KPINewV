@@ -37,6 +37,8 @@ Chaque fichier suit toujours la même forme :
 | `09_ALM_ET_MAINTENANCE` | Durée de vie | Vous savez modifier une règle sans tout casser |
 | `10_BACKLOG` | Lucidité | Ce que cette architecture ne fait pas, et quoi faire alors |
 
+À côté des étapes, un dossier `_a-televerser/` regroupe les six contenus qui vont réellement dans Copilot Studio — les instructions et les cinq `SKILL.md`. Ils sont générés depuis les fiches, vous n'avez donc rien à assembler ni à recopier.
+
 ## Règle de conduite du projet
 
 > **On part toujours du plus simple et du plus natif.** Un composant supplémentaire ne s'ajoute que si un besoin fonctionnel réel ne peut pas être couvert autrement, et cette justification s'écrit dans `01_02_journal-des-decisions-darchitecture.md`.

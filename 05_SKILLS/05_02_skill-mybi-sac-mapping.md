@@ -78,8 +78,9 @@ An empty MyBI column is not the same as "new". It means the correspondence is no
 
 ## Le fichier `SKILL.md` complet
 
-En-tête YAML, puis le corps ci-dessus :
+Il est déjà prêt : [`_a-televerser/skills/mybi-sac-mapping/SKILL.md`](../_a-televerser/skills/mybi-sac-mapping/SKILL.md) — téléversez-le tel quel. Il est **généré** depuis cette fiche, qui reste la source de vérité.
 
+Pour mémoire, son en-tête YAML :
 ```yaml
 ---
 name: mybi-sac-mapping

@@ -47,6 +47,8 @@ Ces exigences ne s'opposent pas à la vérifiabilité, parce que **la vérificat
 3. Collez le texte ci-dessous **en entier**.
 4. Enregistrez.
 
+> Le même contenu est disponible comme fichier prêt à ouvrir : [`_a-televerser/instructions.md`](../_a-televerser/instructions.md). Ce fichier est **généré** depuis le bloc ci-dessous, qui reste la source de vérité — modifiez toujours la fiche, jamais le fichier généré.
+
 ## Le texte à copier
 
 ```markdown

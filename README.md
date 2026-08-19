@@ -28,7 +28,7 @@ Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle O
 | [`03_KNOWLEDGE_SHAREPOINT`](03_KNOWLEDGE_SHAREPOINT/) | Données | L'agent lit `KPIDictionary` en direct |
 | [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 26 règles globales, prêtes à copier |
 | [`05_SKILLS`](05_SKILLS/) | Comportements situationnels | Les 5 Skills, chacun avec son `SKILL.md` complet |
-| [`06_EVALUATION`](06_EVALUATION/) | Qualité | 52 cas de test avec valeurs de référence, seuils, non-régression |
+| [`06_EVALUATION`](06_EVALUATION/) | Qualité | 53 cas de test, repères de non-régression, seuils, politique de régression |
 | [`07_PUBLICATION`](07_PUBLICATION/) | Mise en service | L'agent publié dans Teams, bascule depuis l'ancien |
 | [`08_MONITORING_ET_COUTS`](08_MONITORING_ET_COUTS/) | Exploitation | Ce que fait l'agent, ce qu'il coûte |
 | [`09_ALM_ET_MAINTENANCE`](09_ALM_ET_MAINTENANCE/) | Durée de vie | Modifier une règle sans effet de bord |
@@ -56,6 +56,10 @@ Les deux conséquences les plus importantes de ce principe :
 - Les fichiers sont en **français** ; tout ce qui se colle **dans** Copilot Studio est en **anglais**.
 - **[OFFICIEL]** = documenté par Microsoft · **[CHOIX PROJET]** = décision de ce projet · **[À VÉRIFIER]** = à confirmer dans votre environnement.
 - Copilot Studio évolue vite : vérifiez les limites et les statuts de préversion dans la documentation courante avant toute décision de production.
+
+## Contenus prêts à téléverser
+
+Le dossier [`_a-televerser/`](_a-televerser/) contient les six artefacts qui vont réellement dans Copilot Studio : `instructions.md` et les cinq `skills/<nom>/SKILL.md`. Ils sont **générés** depuis les fiches d'étape par `python3 outils/extraire-contenus-agent.py` — les fiches restent la source de vérité, le dossier ne s'édite jamais à la main. `--verifier` contrôle que les deux sont synchronisés.
 
 ## Documentation de référence
 

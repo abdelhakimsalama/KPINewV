@@ -2,7 +2,7 @@
 
 ## Objectif du fichier
 
-- **À quoi sert ce fichier** : justifier chacune des 23 règles collées en `04_01`, pour que vous puissiez en modifier une plus tard **sans casser** ce qu'elle protégeait.
+- **À quoi sert ce fichier** : justifier chacune des 26 règles collées en `04_01`, pour que vous puissiez en modifier une plus tard **sans casser** ce qu'elle protégeait.
 - **Étape du développement** : étape 04, comportement permanent. À lire une fois maintenant, à relire avant toute modification.
 - **Ce que vous faites dans Copilot Studio à partir de ce fichier** : rien. C'est la notice des Instructions.
 - **Résultat attendu avant de passer à l'étape suivante** : vous savez quelle règle protège quoi, et laquelle vous n'avez pas le droit de retirer.

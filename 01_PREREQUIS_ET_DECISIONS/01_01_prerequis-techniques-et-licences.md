@@ -44,7 +44,7 @@ Vous n'avez pas besoin de migrer quoi que ce soit — le nouvel agent se constru
 
 1. **L'URL exacte de la liste** `KPIDictionary` (site `ReportingTower10`).
 2. **Les libellés exacts des 12 colonnes métier**, y compris `MyBI  Field name - EN` qui contient un **double espace** dans son libellé. Ce détail compte pour l'étape 03.
-3. **Les cas de test métier et leurs valeurs de référence.** C'est l'actif le plus précieux de l'ancien projet : les décomptes établis en runtime par l'ancien moteur (188 `Primary KPI`, 509 `Derived KPI`, 1 767 `Dimension`, 192 renommages distincts, 39 requêtes SAC, 6 personas, 2 requêtes couvrant `duty free` et `duty paid`…) servent d'**oracle** pour vérifier les réponses analytiques du nouvel agent. Ils sont repris dans `06_02`.
+3. **Les cas de test métier et leurs valeurs de référence.** C'est l'actif le plus précieux de l'ancien projet : les décomptes établis en runtime par l'ancien moteur (188 `Primary KPI`, 509 `Derived KPI`, 1 767 `Dimension`, 192 renommages distincts, 39 requêtes SAC, 6 personas, 2 requêtes couvrant `duty free` et `duty paid`…) servent de **repères** pour contrôler les réponses analytiques du nouvel agent. Ils sont repris dans `06_02`.
 
 Tout le reste de l'agent actuel — instructions, description d'outil, flux, topics — n'est **pas** à reprendre. C'est un choix : reproduire l'ancienne architecture sous une autre forme est précisément ce que ce projet évite.
 

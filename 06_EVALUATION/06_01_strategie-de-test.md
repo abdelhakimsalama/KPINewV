@@ -55,7 +55,7 @@ Les familles B et C sont celles qui portent la valeur du produit. Un agent qui �
 
 **Règle pratique :** automatisez A, G, H, I. Relisez **B, C, D et E** à chaque exécution complète — ce sont les familles où l'échec est une nuance de formulation ou une justification manquante. F se relit à chaque modification de la table de vocabulaire.
 
-**Pour C et D spécifiquement :** trois essais par cas, dans des conversations séparées, et consignation de l'écart à l'oracle **et** de la latence. Une capacité analytique est déclarée fiable à 3 succès sur 3, à surveiller à 2 sur 3, non fiable en dessous.
+**Pour C et D spécifiquement :** trois essais par cas, dans des conversations séparées, et consignation de l'écart au repère **et** de la latence. Une capacité analytique est déclarée fiable à 3 succès sur 3, à surveiller à 2 sur 3, non fiable en dessous.
 
 ## Deux conseils qui évitent des faux résultats
 

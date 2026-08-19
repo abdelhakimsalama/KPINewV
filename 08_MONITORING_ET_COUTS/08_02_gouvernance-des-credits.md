@@ -19,12 +19,12 @@ C'est la différence de modèle économique la plus importante entre l'ancien ag
 
 | Poste | Quand | Ordre de grandeur |
 |---|---|---|
-| **Exécutions d'évaluation** | Phase de projet | **Le poste dominant pendant le développement.** 43 cas × plusieurs exécutions par jour |
+| **Exécutions d'évaluation** | Phase de projet | **Le poste dominant pendant le développement.** 53 cas × plusieurs exécutions par jour, et trois essais sur les cas analytiques |
 | Conversations utilisateurs | Après publication | Le poste dominant en régime établi |
 | Tests dans Preview | Phase de projet | Faible unitairement, non négligeable en cumul |
 | Consultation de la source | À chaque question de données | Inclus dans le coût de la réponse |
 
-Conséquence pratique en phase de projet : **regroupez vos exécutions d'évaluation**. Modifier une description, relancer les 43 cas, remodifier, relancer — c'est le réflexe le plus coûteux. Testez les cas ciblés dans Preview, et réservez la suite complète aux moments de décision.
+Conséquence pratique en phase de projet : **regroupez vos exécutions d'évaluation**. Modifier une description, relancer les 53 cas, remodifier, relancer — c'est le réflexe le plus coûteux. Testez les cas ciblés dans Preview, et réservez la suite complète aux moments de décision.
 
 ## Les garde-fous à poser
 

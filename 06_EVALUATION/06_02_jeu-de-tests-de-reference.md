@@ -5,7 +5,7 @@
 - **À quoi sert ce fichier** : fournir les cas de test qui définissent le comportement attendu de l'agent, **avec les valeurs de référence** permettant de vérifier objectivement les réponses analytiques.
 - **Étape du développement** : étape 06, qualité. Le fichier compagnon `06_02_jeu-de-tests-de-reference.csv` sert à l'import.
 - **Ce que vous faites dans Copilot Studio** : vous importez le CSV dans un jeu de tests, ou vous rejouez les cas à la main dans **Preview** pour les familles qui demandent une relecture.
-- **Résultat attendu avant de passer à l'étape suivante** : tous les cas bloquants passent ; les résultats analytiques sont **mesurés** contre l'oracle et consignés.
+- **Résultat attendu avant de passer à l'étape suivante** : tous les cas bloquants passent ; les résultats analytiques sont **contrôlés dans la liste** et consignés.
 
 ---
 
@@ -92,7 +92,7 @@ Une réponse correcte mais noyée dans une explication de méthode est un échec
 | A3 | `Quelle est la formule du taux de service aval Argon ?` | Formule **verbatim en bloc de code**, sauts de ligne préservés |
 | A4 | `What is "Fashion : Prod. Categ"?` | Libellé cité **exactement**, espace avant les deux-points compris |
 | A5 | `Que signifie "Mode : Ccatégorie de produit" ?` | La coquille est **conservée**, jamais corrigée |
-| A6 | `Tell me about Stock Value` | Contenu réel ; **oracle : 5 entrées, 3 `Primary KPI` + 2 `Derived KPI`** |
+| A6 | `Tell me about Stock Value` | Contenu réel ; **repère : 5 entrées, 3 `Primary KPI` + 2 `Derived KPI`** |
 
 ## Famille B — Non-invention *(bloquante, la plus importante)*
 

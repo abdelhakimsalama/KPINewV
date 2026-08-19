@@ -74,8 +74,9 @@ Answer questions about the meaning, definition, formula and type of a KPI, field
 
 ## Le fichier `SKILL.md` complet
 
-Si vous utilisez le téléversement (méthode recommandée en `05_00`), créez le fichier `SKILL.md` ainsi : l'en-tête YAML ci-dessous, puis **le corps du Skill donné plus haut**.
+Il est déjà prêt : [`_a-televerser/skills/kpi-field-details/SKILL.md`](../_a-televerser/skills/kpi-field-details/SKILL.md) — téléversez-le tel quel. Il est **généré** depuis cette fiche, qui reste la source de vérité.
 
+Pour mémoire, son en-tête YAML :
 ```yaml
 ---
 name: kpi-field-details

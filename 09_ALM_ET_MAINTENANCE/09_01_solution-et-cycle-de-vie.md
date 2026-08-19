@@ -48,8 +48,11 @@ Les Instructions et les cinq Skills sont **du texte**. Ils peuvent donc vivre da
 **Discipline à tenir :**
 
 1. Toute modification d'une Instruction ou d'un Skill se fait **d'abord ici**, dans `04_01` ou `05_0x`.
-2. Le texte modifié est **ensuite** collé ou téléversé dans Copilot Studio.
-3. Le commit décrit le motif : `Skill 4 : ajout du synonyme "enseigne" (observé 12 fois en septembre)`.
+2. On régénère les contenus à téléverser : `python3 outils/extraire-contenus-agent.py`.
+3. Le fichier régénéré est **ensuite** collé ou téléversé dans Copilot Studio.
+4. Le commit décrit le motif : `Skill 4 : ajout du synonyme "enseigne" (observé 12 fois en septembre)`.
+
+Le dossier `_a-televerser/` est dérivé, jamais édité à la main. `python3 outils/extraire-contenus-agent.py --verifier` répond en une seconde à la question « le dépôt est-il cohérent ? » : un `git diff` vide après régénération prouve que les fiches et les contenus téléversés disent la même chose.
 
 Ainsi, `04_01` et `05_0x` ne sont pas de la documentation qui se périme : ce sont **les sources** du comportement de l'agent, et le produit en est le déploiement. Faites l'inverse — modifier dans le produit puis « penser à mettre à jour le dépôt » — et vous retrouverez en trois mois la situation que ce projet cherchait à sortir : un état déployé que personne ne peut prouver.
 

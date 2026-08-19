@@ -37,9 +37,11 @@ Deux entrées possibles, au choix :
 
 **A. Créer depuis un modèle vierge** *(le plus simple pour démarrer)* — la boîte demande trois champs : **Name**, **Description**, **Instructions**. Chaque fichier `05_0x` vous donne les trois, prêts à coller.
 
-**B. Téléverser un fichier `SKILL.md`** *(le plus proche de la gestion en dépôt)* — chaque fichier `05_0x` fournit aussi le `SKILL.md` complet, en-tête YAML incluse. Créez le fichier sur votre poste, puis téléversez-le.
+**B. Téléverser un fichier `SKILL.md`** *(le plus proche de la gestion en dépôt)* — les cinq `SKILL.md` complets, en-tête YAML incluse, sont déjà prêts dans [`_a-televerser/skills/`](../_a-televerser/skills/), un dossier par Skill. Vous n'avez rien à assembler : vous téléversez le fichier.
 
 > **Recommandation de ce projet** : utilisez la méthode **B**. Le `SKILL.md` que vous téléversez est exactement celui qui est versionné ici : le dépôt reste la référence, et une modification se relit dans un diff. C'est l'un des gains les plus concrets de la nouvelle expérience — le comportement de l'agent devient du texte suivi en Git, au lieu d'une configuration invisible.
+>
+> Les fichiers de `_a-televerser/` sont **générés** depuis les fiches `05_0x` par `python3 outils/extraire-contenus-agent.py`. On modifie donc toujours la fiche, puis on régénère : aucune divergence n'est possible entre ce que documente le dépôt et ce que vous téléversez.
 
 ## Comment écrire une description qui route juste
 

@@ -31,8 +31,9 @@ C'est 90 % du travail. Une modification placée au mauvais endroit fonctionne un
 ## Étape 2 : appliquer, dans cet ordre
 
 1. **Modifiez le fichier de ce dépôt** (`04_01` ou `05_0x`).
-2. **Reportez dans Copilot Studio** : collez les Instructions, ou téléversez le `SKILL.md`.
-3. **Ne publiez pas encore.**
+2. **Régénérez** les contenus : `python3 outils/extraire-contenus-agent.py`.
+3. **Reportez dans Copilot Studio** : collez `_a-televerser/instructions.md`, ou téléversez le `SKILL.md` régénéré.
+4. **Ne publiez pas encore.**
 
 L'ordre compte : le dépôt d'abord, le produit ensuite. C'est ce qui garantit que le dépôt reste la référence et non un reflet approximatif.
 
@@ -65,7 +66,7 @@ Le motif compte plus que le contenu du changement : dans un an, le diff dira **q
 
 **« L'agent se trompe sur un cas précis. »** Vérifiez d'abord si la donnée existe dans `KPIDictionary`. Dans la majorité des cas, ce n'est pas une règle à corriger mais une donnée absente ou ambiguë. Corrigez la liste, pas l'agent.
 
-**« L'agent donne un décompte faux. »** Regardez **ce qu'il a compté** avant de toucher à une règle : compter des lignes au lieu de valeurs distinctes est l'erreur n° 1, et c'est exactement celle que faisait l'ancien moteur (202 au lieu de 192). La correction est une précision de définition dans le Skill concerné, pas une interdiction de compter.
+**« L'agent donne un décompte faux. »** Ouvrez la trace d'activité et regardez ce qu'il a fait **avant** de toucher à une règle. Deux causes dominent : il a extrapolé depuis les lignes affichées au lieu d'interroger l'ensemble des données (règle 6), ou il a répondu à une autre lecture de la question que celle attendue. La correction est une précision dans le Skill concerné — jamais une interdiction de compter, et jamais une convention de comptage imposée d'avance.
 
 **« L'agent respecte la règle 9 fois sur 10. »** C'est la variabilité normale d'un comportement probabiliste, pas un bug ponctuel. N'ajoutez surtout pas une règle supplémentaire : empiler dilue au lieu de stabiliser. Deux leviers, dans l'ordre — rendre la règle existante plus courte et plus explicite, puis changer de modèle et re-mesurer.
 

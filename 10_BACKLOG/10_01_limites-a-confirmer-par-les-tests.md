@@ -105,6 +105,6 @@ L'équilibre n'est pas à sens unique. Ces défauts ouverts de l'ancienne archit
 ## Critères de fin d'étape
 
 - [ ] Le registre des limitations confirmées est rempli à partir des mesures de l'étape 06 — ou reste vide si rien n'a échoué.
-- [ ] Chaque ligne inscrite porte sa question, son oracle, ses essais et ses tentatives de correction.
+- [ ] Chaque ligne inscrite porte sa question, ce que montre la trace, ses essais et ses tentatives de correction.
 - [ ] Les limites liées aux données sont distinguées de celles liées à l'architecture.
 - [ ] La formulation présentée au métier correspond à ce qui a été **mesuré**.
