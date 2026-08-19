@@ -16,8 +16,8 @@
 | **A — Exactitude et verbatim** | **100 %** | Un libellé modifié est introuvable dans SAC : la réponse devient inutilisable |
 | **B — Non-invention** | **100 %** | Une seule invention suffit à disqualifier un dictionnaire de référence |
 | **C — Chiffres** *(critère origine)* | **100 %** | Un chiffre que l'agent ne peut pas justifier est indétectable pour l'utilisateur |
-| **C — Chiffres** *(critère lisibilité)* | **100 %** | Un chiffre dont l'agent ne dit pas ce qu'il compte est invérifiable |
-| **C — Chiffres** *(critère exactitude)* | **100 %**, contrôlé dans la liste | Un chiffre faux est faux, quelle que soit la qualité de l'explication |
+| **C — Chiffres** *(critère exactitude)* | **100 %**, contrôlé dans la liste | Un chiffre faux est faux, quelle que soit la qualité de la réponse |
+| **C — Chiffres** *(critère sobriété)* | **100 %** | Une réponse qui raconte sa méthode alourdit sans rien apporter |
 | **D — Croisements** *(critère preuve)* | **100 %** | Une couverture affirmée sans champ cité n'est pas vérifiable |
 | **D — Croisements** *(critère exactitude)* | **100 %**, contrôlé dans la liste | Idem |
 | **C et D** *(critère stabilité)* | **Mesuré, pas seuillé** | Voir la règle de décision analytique ci-dessous |
@@ -35,22 +35,22 @@ Les familles C et D ne se jugent pas comme les autres, parce qu'on y mesure deux
 
 Trois critères, dans cet ordre. Ils ne sont pas interchangeables.
 
-**1. Lisibilité — bloquant.** L'agent énonce ce qu'il compte, et cite les champs qui prouvent une couverture. Sans cela, rien n'est vérifiable, et le cas est en échec immédiat.
+**1. Exactitude — décisif.** Le chiffre est juste, contrôlé dans la liste SharePoint selon la procédure de `06_02` — trace d'activité pour savoir quoi reproduire, liste pour trancher. **Un chiffre faux est un échec, quelle que soit la qualité de la réponse.** C'est le point à ne jamais relâcher : un résultat vraisemblable mais inexact est le pire cas de figure, parce qu'il inspire confiance.
 
-**2. Exactitude — décisif.** Le chiffre est juste **pour la lecture que l'agent a annoncée**, contrôlé dans la liste SharePoint selon la procédure de `06_02`. **Un chiffre faux est un échec, quelle que soit la qualité de l'explication.** C'est le point à ne jamais relâcher : un résultat plausible et bien argumenté mais inexact est le pire cas de figure, parce qu'il inspire confiance.
+**2. Sobriété — bloquant.** La réponse donne le résultat, pas la méthode. Ni nom de colonne, ni filtre, ni récit des étapes suivies : cette information existe déjà dans la trace d'activité, et la répéter dans la réponse ne fait qu'alourdir. Une réponse juste mais bavarde est à corriger avant publication.
 
 **3. Stabilité — classant.** La réponse tient-elle sur trois essais à question identique ? C'est ce critère, une fois les deux premiers acquis, qui décide de ce qu'on annonce aux utilisateurs.
 
 | Résultat sur 3 essais | Décision |
 |---|---|
-| Lisible **et exact** 3 fois sur 3 | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
-| Lisible et exact **2 fois sur 3**, ou lecture qui varie sans que la question change | La capacité est **à surveiller**. Elle reste active ; le cas revient à chaque campagne |
+| **Exact** 3 fois sur 3 | La capacité est **fiable**. Elle est annoncée aux utilisateurs comme telle |
+| Exact **2 fois sur 3**, ou résultat qui varie sans que la question change | La capacité est **à surveiller**. Elle reste active ; le cas revient à chaque campagne |
 | **Moins de 2 fois sur 3**, après ajustement des règles et du Skill | La capacité est **non fiable sur ce cas**. On l'écrit dans `10_01` **avec les preuves** — et seulement à ce moment-là |
 
 Deux précisions qui évitent les faux verdicts, dans les deux sens :
 
-- **Un écart au repère n'est pas en soi un échec** : le repère répond à une lecture donnée, l'agent peut légitimement en retenir une autre. C'est le contrôle dans la liste qui tranche, jamais le repère.
-- **Une explication convaincante ne rachète jamais un chiffre faux.** Si le contrôle dans la liste infirme le nombre, le cas est en échec — même si la lecture annoncée était claire et le raisonnement cohérent.
+- **Un écart au repère n'est pas en soi un échec** : le repère répond à une lecture donnée de la question, l'agent peut légitimement en retenir une autre. C'est le contrôle dans la liste qui tranche, jamais le repère.
+- **Une réponse bien tournée ne rachète jamais un chiffre faux.** Si le contrôle dans la liste infirme le nombre, le cas est en échec.
 
 Aucune capacité ne descend au troisième niveau sans être passée par les deux premiers. C'est la contrepartie du principe de non-disqualification : on ne retire rien sans mesure, mais on n'annonce rien non plus sans mesure.
 
@@ -61,9 +61,9 @@ Ne corrigez jamais un échec en ajoutant du texte dans les Instructions par réf
 | L'échec porte sur | Regardez d'abord | Puis |
 |---|---|---|
 | Une règle globale (invention, origine du chiffre, verbatim, langue) | `04_01` — la règle a-t-elle été collée en entier ? | Reformulez la règle concernée, sans en ajouter une nouvelle |
-| Un chiffre non justifié | La règle 6 de `04_01` et le Skill concerné | Renforcez l'exigence d'énoncer la lecture, sans imposer laquelle |
-| Un chiffre **faux** sous sa propre lecture | La règle 7 de `04_01` — le plus souvent, l'agent a extrapolé depuis les lignes affichées au lieu d'interroger l'ensemble des données | Renforcez ce point dans le Skill concerné, puis re-mesurez |
-| Une lecture qui change à question identique | La stabilité, pas la définition | Consignez les trois essais ; c'est le signal le plus utile pour classer la capacité |
+| Un chiffre **faux** | La règle 6 de `04_01` — le plus souvent, l'agent a extrapolé depuis les lignes affichées au lieu d'interroger l'ensemble des données | Renforcez ce point dans le Skill concerné, puis re-mesurez |
+| Une réponse qui raconte sa méthode | La règle 7 de `04_01` | Vérifiez qu'elle a été collée ; au besoin, renforcez-la dans le Skill concerné |
+| Un résultat qui change à question identique | La stabilité, pas la définition | Consignez les trois essais ; c'est le signal le plus utile pour classer la capacité |
 | Un décompte refusé | La règle 5 de `04_01` — elle **autorise** les décomptes issus des données | Vérifiez qu'elle a été collée ; ne la durcissez pas |
 | Un décompte très lent ou sans réponse | Le périmètre de la question : les questions portant sur toute la liste peuvent être limitées en débit **[OFFICIEL]** | Consignez la latence ; c'est un candidat pour `10_01` si c'est reproductible |
 | Une procédure (format, ordre, mise en forme) | Le Skill concerné en `05_0x` | Ajustez le Skill, pas les Instructions |
@@ -113,11 +113,11 @@ Skills en place : 5 / oui-non
 Résultats par famille
   A Exactitude ............................ ... %   (exigé 100 %)
   B Non-invention ....................... ... %   (exigé 100 %)
-  C Chiffres — lisibilité ............... ... %   (exigé 100 %)
   C Chiffres — exactitude vérifiée ...... ... %   (exigé 100 %, contrôle dans la liste)
+  C Chiffres — sobriété des réponses .... ... %   (exigé 100 %)
   C Chiffres — stabilité sur 3 essais ... ... / 9 cas   (mesuré)
-  D Croisements — preuve ................ ... %   (exigé 100 %)
   D Croisements — exactitude vérifiée ... ... %   (exigé 100 %, contrôle dans la liste)
+  D Croisements — champs nommés ......... ... %   (exigé 100 %)
   D Croisements — stabilité sur 3 essais  ... / 5 cas   (mesuré)
   E Ambiguïté ........................... ... %   (exigé 100 %)
   F Vocabulaire ......................... ... %   (exigé 80 %)
@@ -143,8 +143,8 @@ Signé :
 
 - [ ] La suite complète a été exécutée au moins une fois.
 - [ ] Les familles A, B et E sont à 100 %.
-- [ ] Les critères **lisibilité** (C) et **preuve** (D) sont à 100 %.
 - [ ] Le critère **exactitude vérifiée** est à 100 % sur C et D, contrôle fait dans la liste.
+- [ ] Le critère **sobriété** est à 100 % : aucune réponse ne décrit sa méthode.
 - [ ] Chaque capacité analytique est classée fiable / à surveiller / non fiable, **sur mesure**.
 - [ ] Les autres familles atteignent leur seuil.
 - [ ] La fiche de décision est remplie et conservée dans le dépôt.

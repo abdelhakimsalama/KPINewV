@@ -63,7 +63,7 @@ Trois choses en découlent, à tenir ensemble :
 
 1. **L'agent a le droit de compter** — à partir des données de la liste, et en disant ce qu'il compte.
 2. **Il n'a jamais le droit d'estimer.** Un chiffre vient des données ou n'est pas donné. C'est la seule frontière absolue sur ce sujet.
-3. **L'objectif est le chiffre juste, et il se contrôle.** L'agent énonce ce qu'il compte — c'est ce qui rend le résultat vérifiable — puis l'étape 06 contrôle ce chiffre **dans la liste SharePoint**. Un résultat plausible et bien expliqué mais faux est un échec. Les repères de l'ancien runtime servent au contrôle et à la détection de dérive, jamais à imposer une réponse. Une capacité n'est déclarée non fiable qu'après avoir échoué de façon reproductible, et elle est alors inscrite dans `10_BACKLOG` **avec ses preuves**.
+3. **L'objectif est le chiffre juste, dit simplement.** La réponse à l'utilisateur donne le résultat, pas la méthode : le raisonnement de l'agent se consulte séparément dans la trace d'activité, inutile de le répéter. L'étape 06 s'appuie sur cette trace, puis contrôle le chiffre **dans la liste SharePoint**. Les repères de l'ancien runtime servent au contrôle et à la détection de dérive, jamais à imposer une réponse. Une capacité n'est déclarée non fiable qu'après avoir échoué de façon reproductible, et elle est alors inscrite dans `10_BACKLOG` **avec ses preuves**.
 
 Deux réserves documentées à garder en tête : la fonctionnalité est en **préversion**, et les questions portant sur la totalité d'une grande liste peuvent être limitées en débit ou très lentes **[OFFICIEL]**.
 
@@ -71,4 +71,4 @@ Deux réserves documentées à garder en tête : la fonctionnalité est en **pr�
 
 - [ ] Je sais citer les trois composants et ce que chacun porte.
 - [ ] J'ai compris que l'agent n'a aucun outil et ne calcule rien.
-- [ ] J'ai compris que les décomptes sont autorisés, jamais estimés, et que leur exactitude se contrôle dans la liste.
+- [ ] J'ai compris que les décomptes sont autorisés, jamais estimés, donnés sans explication de méthode, et contrôlés dans la liste.

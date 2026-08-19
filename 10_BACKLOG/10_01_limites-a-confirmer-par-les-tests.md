@@ -44,9 +44,9 @@ C'est la contrepartie exacte du principe de non-disqualification de `06_01` : on
 |---|---|---|---|---|---|---|---|
 | *(à remplir à l'étape 06)* | | | | | | | |
 
-**Rappel du barème** (`06_03`) : lisible **et exact** 3/3 = fiable · 2/3 = à surveiller · < 2/3 après ajustements = non fiable, et **seulement alors** la ligne devient une limitation à annoncer. L'exactitude se contrôle dans la liste SharePoint, pas contre le repère.
+**Rappel du barème** (`06_03`) : **exact** 3/3 = fiable · 2/3 = à surveiller · < 2/3 après ajustements = non fiable, et **seulement alors** la ligne devient une limitation à annoncer. L'exactitude se contrôle dans la liste SharePoint, pas contre le repère.
 
-**Ce qu'une ligne doit contenir pour être recevable :** la question exacte, la lecture annoncée par l'agent, ce qu'il a répondu à chaque essai, le résultat du contrôle dans la liste, ce que vous avez tenté pour corriger (règle, Skill, modèle), et la date. Une limitation sans ces éléments n'est pas une limitation, c'est une impression.
+**Ce qu'une ligne doit contenir pour être recevable :** la question exacte, ce que montre la trace d'activité, ce que l'agent a répondu à chaque essai, le résultat du contrôle dans la liste, ce que vous avez tenté pour corriger (règle, Skill, modèle), et la date. Une limitation sans ces éléments n'est pas une limitation, c'est une impression.
 
 ---
 
@@ -56,7 +56,7 @@ Ces valeurs viennent du runtime de l'ancien moteur. Elles ne décrivent pas ce q
 
 Elles sont listées en tête de `06_02`. Deux méritent une attention particulière :
 
-- **Les renommages** : 192 ou 194 selon qu'on compte les renommages ou les anciens noms distincts. Les deux lectures sont valables, et ce n'est pas au dépôt de trancher : l'agent détermine le résultat depuis les données et **dit ce qu'il compte**. Ce qui était fautif chez l'ancien agent, ce n'était pas son chiffre (202) mais son silence sur ce qu'il comptait.
+- **Les renommages** : 192 ou 194 selon qu'on compte les renommages ou les anciens noms distincts. Les deux lectures sont valables, et ce n'est pas au dépôt de trancher : l'agent détermine le résultat depuis les données. Le contrôle se fait par la trace d'activité, pas en exigeant de l'agent qu'il explique sa méthode à l'utilisateur.
 - **0 requête** couvrant `gross sales` + `shop` + `product category`. Un cas d'intersection vide est le meilleur test d'honnêteté qui soit : un agent qui « trouve » quelque chose ici invente.
 
 ---
@@ -82,7 +82,7 @@ L'équilibre n'est pas à sens unique. Ces défauts ouverts de l'ancienne archit
 | Ancien défaut | Statut |
 |---|---|
 | Définitions non transmises en correspondance partielle | **Disparu** — plus de projection à deux niveaux |
-| `totalPairs` annonçait 202 sans dire ce qu'il comptait | **Traité par la règle** — l'agent doit désormais énoncer sa lecture (cas C1) |
+| `totalPairs` annonçait 202, sans moyen de le vérifier | **Traité** — le chiffre est désormais contrôlable via la trace d'activité et la liste (cas C1) |
 | Plafond de 5 000 éléments franchi sans signalement | **Disparu** — plus de lecture plafonnée |
 | Instructions désynchronisées du contrat du moteur | **Disparu** — plus de contrat à synchroniser |
 | Budget d'instructions saturé (7 996 / 8 000) | **Disparu** — les procédures vivent dans les Skills |

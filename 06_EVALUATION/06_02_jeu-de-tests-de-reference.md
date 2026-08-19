@@ -29,18 +29,20 @@ Ces chiffres proviennent du runtime de l'ancien moteur et de l'export de la list
 
 ## Le critère qui décide : l'exactitude, contrôlée dans la liste
 
-**L'objectif est le résultat juste, pas le résultat plausible et bien expliqué.** Un chiffre faux accompagné d'une explication élégante est un échec — c'est même le cas le plus dangereux, parce qu'il inspire confiance.
+**L'objectif est le résultat juste.** Un chiffre faux est un échec, quelle que soit la qualité de la réponse qui l'entoure.
 
-L'énoncé de la lecture n'est donc pas le critère : c'est **l'instrument** du critère. Il vous dit quoi vérifier. La vérification, elle, se fait dans les données.
+La réponse visible par l'utilisateur ne dit **pas** comment le chiffre a été obtenu — c'est une exigence de conception, pas un oubli (règle 7 des Instructions). La vérification ne passe donc pas par la réponse : elle passe par la **trace d'activité**, que la nouvelle expérience expose séparément.
 
 **Procédure de contrôle d'un chiffre, en trois temps :**
 
-1. **L'agent énonce sa lecture.** S'il ne le fait pas, le cas est en échec immédiat : le chiffre est invérifiable.
-2. **Vous reproduisez cette lecture dans SharePoint**, avec les outils natifs de la liste : regroupement par colonne, filtre, nombre d'éléments affiché. Une minute suffit.
-   - *Exemple* : l'agent annonce « 1 767 champs de type Dimension, en comptant les lignes ». Vous regroupez la liste par `KPI / dimension` et vous lisez le compteur du groupe.
-3. **Vous comparez.** Le chiffre est juste pour la lecture annoncée → réussite. Il est faux → échec, quelle que soit la qualité de l'explication.
+1. **Ouvrez la trace d'activité** de l'échange. Elle vous montre ce que l'agent a réellement fait : ce qu'il a interrogé, sur quoi il a raisonné.
+2. **Reproduisez-le dans SharePoint**, avec les outils natifs de la liste : regroupement par colonne, filtre, compteur d'éléments. Une minute suffit.
+   - *Exemple* : la réponse dit « Il y a 1 767 champs de type Dimension. » Vous regroupez la liste par `KPI / dimension` et vous lisez le compteur du groupe.
+3. **Comparez.** Juste → réussite. Faux → échec.
 
-**Le repère intervient en dernier, et seulement comme raccourci** : si la lecture de l'agent est celle du repère, la comparaison est immédiate. Sinon, c'est la liste qui tranche, jamais le repère.
+**Le repère intervient en dernier, et seulement comme raccourci** : si la trace montre que l'agent a suivi la même lecture que le repère, la comparaison est immédiate. Sinon, c'est la liste qui tranche, jamais le repère.
+
+**Contrôlez aussi la forme de la réponse.** Une réponse correcte mais noyée dans une explication de méthode — noms de colonnes, filtres, récit des étapes — est un échec de forme à corriger : elle alourdit inutilement l'expérience utilisateur, alors que l'information est déjà disponible dans la trace.
 
 | Grandeur | Valeur de référence | Origine |
 |---|---|---|
@@ -67,7 +69,7 @@ L'énoncé de la lecture n'est donc pas le critère : c'est **l'instrument** du 
 | Requêtes couvrant `net sales`, `product category` **et** `brand` | 5 | Runtime |
 | Requêtes couvrant `gross sales`, `shop` **et** `product category` | **0** — intersection vide | Runtime |
 
-> **Comment lire un écart au repère.** Un écart n'est pas automatiquement un échec, et il n'est pas automatiquement acceptable non plus. Regardez ce que l'agent a compté, reproduisez-le dans la liste, et tranchez sur les données. Trois signaux d'alarme distincts : un chiffre sans lecture énoncée (invérifiable), un chiffre faux sous sa propre lecture (inexact), et un chiffre qui change d'une exécution à l'autre à question identique (instable).
+> **Comment lire un écart au repère.** Un écart n'est pas automatiquement un échec, et il n'est pas automatiquement acceptable non plus. Ouvrez la trace, reproduisez dans la liste, et tranchez sur les données. Deux signaux d'alarme distincts : un chiffre faux (inexact), et un chiffre qui change d'une exécution à l'autre à question identique (instable).
 
 ---
 
@@ -98,32 +100,32 @@ L'énoncé de la lecture n'est donc pas le critère : c'est **l'instrument** du 
 
 **Trois critères distincts pour chaque cas de cette famille, à noter séparément :**
 
-- **Lisibilité (bloquant)** : l'agent énonce-t-il ce qu'il compte ? Sans cela, le chiffre est invérifiable — échec, **même si le nombre est juste**.
-- **Exactitude (décisif)** : le chiffre est-il juste pour la lecture annoncée, **contrôlé dans la liste** ? Un chiffre faux est un échec, **quelle que soit la qualité de l'explication**.
+- **Exactitude (décisif)** : le chiffre est-il juste, **contrôlé dans la liste** ? C'est le seul critère qui décide de la réussite du cas.
+- **Sobriété (bloquant)** : la réponse donne-t-elle le résultat sans raconter la méthode ? Une réponse juste mais surchargée d'explications techniques est à corriger.
 - **Stabilité (mesurée)** : la réponse tient-elle sur trois essais à question identique ?
 
 | # | Question | Oracle | Attendu |
 |---|---|---|---|
-| C1 | `Combien de champs ont été renommés de MyBI vers SAC ?` | 192 / 194 selon la lecture | Un chiffre issu des données, **avec l'énoncé de ce qui est compté** |
+| C1 | `Combien de champs ont été renommés de MyBI vers SAC ?` | 192 / 194 selon la lecture | Un chiffre juste, **donné directement**, sans description de méthode |
 | C2 | `Combien de champs sont de type Primary KPI ?` | **188** | Idem |
 | C3 | `Combien de champs sont de type Dimension ?` | **1 767** | Idem — cas le plus large, donc le plus exposé au débit et à la latence |
 | C4 | `Combien de requêtes SAC pour le persona Supply ?` | **17** | Idem |
 | C5 | `Combien de champs contient la requête "Detailed analysis of sales" ?` | **184** | Idem |
 | C6 | `Dans combien de requêtes apparaît "Plant: Plant" ?` | **33** | Idem |
 | C7 | `Combien de champs n'ont pas de définition française ?` | **616** | Idem |
-| C8 | `Quelles requêtes contiennent "Gross Sales" ?` | — | Liste dédoublonnée ; **caractère complet ou partiel indiqué** |
-| C9 | `Liste tous les personas` | **6** | Les six valeurs officielles, citées exactement |
+| C8 | `Quelles requêtes contiennent "Gross Sales" ?` | — | Liste dédoublonnée, sans avertissement de routine |
+| C9 | `Liste tous les personas` | **6** | Les six valeurs officielles, citées exactement, sans commentaire superflu |
 
 ## Famille D — Croisements multi-critères *(bloquante sur la preuve, mesurée sur l'exactitude)*
 
-Critère de jugement principal : **chaque requête présentée comme couvrant les critères cite les champs qui le prouvent.**
+Critère de jugement principal : **le croisement est juste**, contrôlé dans la liste. Critère de contenu : chaque requête présentée nomme le champ qui répond à chaque critère — c'est une information utile pour l'utilisateur, pas une explication de méthode.
 
 | # | Question | Oracle | Attendu |
 |---|---|---|---|
-| D1 | `Quelles requêtes contiennent à la fois "duty free" et "duty paid" ?` | **2** — `Mix sales, stocks, prices`, `Price catalog` | Les requêtes **avec les champs cités en preuve** |
+| D1 | `Quelles requêtes contiennent à la fois "duty free" et "duty paid" ?` | **2** — `Mix sales, stocks, prices`, `Price catalog` | Les requêtes, avec le champ correspondant à chaque critère |
 | D2 | `Which queries have gross sales, shop and product category?` | **0** | Dit qu'aucune requête ne couvre les trois, **puis** donne la couverture par critère |
-| D3 | `Quelles requêtes contiennent à la fois sales et stock ?` | **18** | Requêtes avec preuves ; cas volumineux, surveillez la latence |
-| D4 | `Which queries have net sales, product category and brand?` | **5** | Requêtes avec preuves |
+| D3 | `Quelles requêtes contiennent à la fois sales et stock ?` | **18** | Requêtes et champs correspondants ; cas volumineux, surveillez la latence |
+| D4 | `Which queries have net sales, product category and brand?` | **5** | Requêtes et champs correspondants |
 | D5 | `Quelles requêtes ont des ventes et un point de vente ?` | **34** | Croisement **après résolution du vocabulaire métier** (`point de vente` → `Plant: Plant`) |
 
 ## Famille E — Ambiguïté *(bloquante)*
@@ -183,13 +185,13 @@ Critère de jugement principal : **chaque requête présentée comme couvrant le
 Pour chaque cas des familles C et D, remplissez une ligne. C'est ce tableau, et lui seul, qui autorisera plus tard à écrire une limitation dans `10_01`.
 
 ```
-Cas  Repère   Réponse  Lecture annoncée  Vérifié dans SharePoint  Exact ?   Stable 3/3 ?  Latence
-C1   192/194  ...      ...               oui / non                oui/non   ...           ...
-C2   188      ...      ...               oui / non                oui/non   ...           ...
+Cas  Repère   Réponse  Ce que montre la trace  Vérifié dans SharePoint  Exact ?  Sobre ?  Stable 3/3  Latence
+C1   192/194  ...      ...                     oui / non                oui/non  oui/non  ...         ...
+C2   188      ...      ...                     oui / non                oui/non  oui/non  ...         ...
 ...
 ```
 
-La colonne qui décide est **« Exact ? »**, renseignée après contrôle dans la liste. « Lecture annoncée » conditionne la vérification — sans elle, on ne peut rien contrôler. « Repère » ne sert qu'au raccourci et à la détection de dérive.
+La colonne qui décide est **« Exact ? »**, renseignée après contrôle dans la liste. « Ce que montre la trace » sert à savoir quoi reproduire. « Sobre ? » note la forme de la réponse. « Repère » ne sert qu'au raccourci et à la détection de dérive.
 
 **Trois essais par cas, dans des conversations séparées.** Le comportement est probabiliste : un succès isolé ne prouve pas plus qu'un échec isolé. Une capacité est déclarée fiable si elle passe **3 fois sur 3**, à surveiller si elle passe 2 fois sur 3, non fiable en dessous.
 
@@ -197,8 +199,8 @@ La colonne qui décide est **« Exact ? »**, renseignée après contrôle dans 
 
 - [ ] Tous les cas sont exécutés au moins une fois ; les familles C et D le sont **trois fois**.
 - [ ] Les familles A, B et E passent à 100 %.
-- [ ] Le critère **lisibilité** est respecté sur 100 % des cas C et D.
-- [ ] Chaque chiffre a été **contrôlé dans la liste SharePoint** sous la lecture annoncée.
-- [ ] Le tableau de consignation est rempli : réponse, lecture annoncée, stabilité, latence.
+- [ ] Chaque chiffre a été **contrôlé dans la liste SharePoint**, via la trace d'activité.
+- [ ] Aucune réponse ne décrit sa méthode : colonnes, filtres, étapes de recherche.
+- [ ] Le tableau de consignation est rempli : réponse, ce que montre la trace, exactitude, sobriété, stabilité, latence.
 - [ ] Aucun repère de non-régression n'a été communiqué à l'agent.
 - [ ] La famille H est vérifiée dans la trace d'activité, pas depuis les réponses.

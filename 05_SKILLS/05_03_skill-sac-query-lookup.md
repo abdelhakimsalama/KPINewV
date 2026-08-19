@@ -42,14 +42,14 @@ Answer questions about SAC queries and their contents, using only "KPIDictionary
 2. Search a second time using SAC query names and query-related wording for the same term, because a term can appear in a query name as well as in a field name.
 3. Merge only what the retrieved rows actually show. Never add a query association that no row demonstrates.
 4. Answer with a single de-duplicated bullet list: each SAC query once, quoted exactly, with its persona on the same line.
-5. Say whether the list you gave is complete or partial, based on what the retrieval actually returned.
+5. Say that the list is partial only when it actually is. Do not add a routine disclaimer to every answer.
 
 ## What a query contains
 
 1. Search "KPIDictionary" with the exact SAC query name.
 2. Describe what you found: the field names, each with its type, quoted exactly.
 3. Group the answer by field type (Primary KPI, Derived KPI, Dimension) to keep it readable.
-4. You may give how many fields the query contains, and how they break down by field type, when the list data establishes it. Say what you counted. If you cannot establish it reliably, say so rather than estimating.
+4. You may give how many fields the query contains, and how they break down by field type, when the list data establishes it. Give the figures directly, without explaining how you obtained them. If you cannot establish them reliably, say so rather than estimating.
 5. If the answer would be long, show the most relevant fields and offer to continue rather than dumping everything.
 
 ## Several criteria at once
@@ -58,15 +58,16 @@ This is the case that needs the most care, and the one where evidence matters mo
 
 1. Query "KPIDictionary" for the criteria together, and for each criterion on its own.
 2. A SAC query may be presented as covering several criteria ONLY when the data shows every one of those criteria on that same query. Never assume that criteria found separately belong to the same query.
-3. For every query you present as covering all the criteria, quote the matching field names as evidence, one per criterion. The evidence is not decoration: it is what makes the claim checkable by the user.
+3. For every query you present as covering all the criteria, name the matching fields, one per criterion. This is useful content for the user — it tells them which field answers which criterion — not an explanation of your method.
 4. Then give, separately, the coverage found for each criterion on its own, so the user sees the near-misses.
-5. If no query is shown to carry all the criteria, say so plainly and give the per-criterion coverage. Do not present a near-match as an answer.
-6. Say whether the result is complete or partial. If the scope was too broad to establish reliably, say that instead of implying certainty.
+5. If no query carries all the criteria, say so plainly and give the per-criterion coverage. Do not present a near-match as an answer.
+6. If the scope was too broad to establish the result reliably, say so in one sentence instead of implying certainty.
 
 ## Never
 
 - Never estimate a number of queries or fields, and never extrapolate one from the rows you happened to see. A figure comes from the data or is not given.
-- Never claim that a query covers a criterion without quoting the field that proves it.
+- Never claim that a query covers a criterion without naming the field that matches it.
+- Never describe your search method in the answer: no column names, no filters, no account of the steps you took.
 - Never translate a SAC query name: they exist in English only and are quoted unchanged in every language.
 - Never reorganise the answer around a persona the user did not state.
 - If a row was found through a former MyBI name, say so at the top of the answer.
@@ -94,10 +95,10 @@ description: Use when the user asks which SAC query contains a given field, KPI 
 
 Les contrôles 3, 4 et 5 sont ceux à surveiller dans la durée : c'est là que le modèle sera le plus tenté d'affirmer un résultat vraisemblable. Deux critères, tous deux nécessaires :
 
-- **La preuve** : une formulation comme « ces deux requêtes couvrent vos trois critères » sans les champs cités est un échec, même si le résultat se trouve être exact — parce que rien ne permet de le vérifier.
-- **L'exactitude** : une réponse accompagnée de ses preuves mais **fausse** est également un échec. Les preuves servent à contrôler le résultat dans la liste, pas à l'excuser.
+- **L'exactitude** : le croisement est-il juste ? C'est le critère décisif, et il se contrôle dans SharePoint en reproduisant le croisement avec les filtres natifs de la liste.
+- **Les champs nommés** : chaque requête présentée doit indiquer quel champ répond à quel critère. Ce n'est pas de la méthode, c'est du contenu utile — l'utilisateur veut savoir *quel* champ correspond. Une réponse du type « ces deux requêtes couvrent vos trois critères », sans nommer les champs, est incomplète.
 
-Le contrôle se fait dans SharePoint : reproduisez le croisement annoncé avec les filtres natifs de la liste et comparez.
+La réponse ne doit en revanche **pas** raconter comment l'agent s'y est pris. Pour cela, ouvrez la trace d'activité.
 
 ## Ajustements courants
 

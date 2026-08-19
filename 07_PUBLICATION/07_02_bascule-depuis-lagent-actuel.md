@@ -28,7 +28,7 @@ Ne basculez pas sur une impression. Ces cinq conditions doivent être vraies **e
 |---|---|---|
 | 1 | La suite de tests complète passe aux seuils de `06_03` | Fiche de décision signée |
 | 2 | Deux semaines de pilote sans **aucune** invention signalée | Retours du groupe pilote + onglet Monitor |
-| 3 | Aucun chiffre estimé, aucune couverture affirmée sans preuve pendant le pilote | Relecture des échanges dans Monitor |
+| 3 | Aucun chiffre faux ni estimé pendant le pilote, et des réponses restées simples | Relecture des échanges dans Monitor |
 | 4 | Les utilisateurs pilotes préfèrent le nouvel agent, ou le jugent équivalent | Demandez-le explicitement, ne le supposez pas |
 | 5 | Le registre de `10_01` est rempli et **accepté par le métier**, par écrit | Voir la section suivante |
 
@@ -42,7 +42,7 @@ Le critère 5 est celui qu'on oublie et qui fait revenir un projet en arrière t
 2. **Celles classées à surveiller** (2 sur 3) — nommez-les, avec la réserve qui les accompagne.
 3. **Celles déclarées non fiables**, s'il y en a — nommez-les, avec les preuves, et dites que la liste `KPIDictionary` fait foi sur ces points.
 
-**Un point à porter en réunion dans tous les cas :** l'ancien agent annonçait « 202 champs renommés » sans jamais dire ce qu'il comptait, et aucun utilisateur ne pouvait vérifier. Le nouvel agent détermine le résultat depuis les données et **énonce sa lecture** — noms distincts, paires, lignes. Ce que le projet garantit désormais, ce n'est pas un chiffre unique et définitif : c'est qu'un chiffre vient des données et qu'on sait ce qu'il mesure.
+**Un point à porter en réunion dans tous les cas :** l'ancien agent annonçait « 202 champs renommés », un chiffre que personne ne pouvait vérifier. Le nouvel agent détermine le résultat depuis les données, et son raisonnement est consultable dans la trace d'activité — sans alourdir la réponse faite à l'utilisateur. Ce que le projet garantit, c'est un chiffre issu des données et contrôlable, pas une explication de méthode à chaque réponse.
 
 Si le métier juge qu'une capacité classée non fiable est indispensable, **ne basculez pas** : allez lire `10_02`, qui décrit ce qu'il faudrait ajouter et ce que cela coûte.
 

@@ -21,10 +21,10 @@ Une règle va dans les **Instructions** si elle est vraie dans **100 %** des con
 | 2 | **Zéro invention** — n'affirmer que ce que la source montre | Instructions | Inchangée. **C'est la règle la plus importante du projet** |
 | 3 | **Verbatim** — citer les valeurs officielles exactement, coquilles et préfixes compris | Instructions | Inchangée |
 | 4 | **Ne jamais choisir à la place de l'utilisateur** | Instructions + Skill 04 | Le principe est permanent ; le protocole d'ambiguïté est situationnel |
-| 5 | **Ne jamais compter soi-même** | Instructions | **PRÉCISÉE → un chiffre vient des données, jamais d'une estimation** (voir ci-dessous) |
+| 5 | **Ne jamais compter soi-même** | Instructions | **PRÉCISÉE → un chiffre vient des données, jamais d'une estimation ; donné sans explication de méthode** (voir ci-dessous) |
 | 6 | **Persona prouvé, jamais inféré** | Instructions + Skill 05 | Le principe est permanent ; le détail des six valeurs et la conduite à tenir sont dans le Skill |
 | 7 | **Absence honnête** — dire « non trouvé » et ce qui a été cherché | Instructions | Inchangée |
-| 8 | **Troncature toujours annoncée avec le total réel** | Instructions | **PRÉCISÉE → dire si une liste est complète ou partielle, et le dire quand un chiffre n'est pas établissable** (voir ci-dessous) |
+| 8 | **Troncature toujours annoncée avec le total réel** | Instructions | **PRÉCISÉE → signaler un résultat partiel quand il l'est réellement, sans avertissement de routine** (voir ci-dessous) |
 | 9 | **`new` n'est pas un nom de champ** | Instructions + Skill 02 | Rappel court en Instructions, traitement détaillé dans le Skill mapping |
 | 10 | **Synonymes : table figée, l'agent n'en crée pas** | Skill 04 | La table devient un tableau Markdown dans le Skill |
 | 11 | **Langue de réponse = langue du message ; traduire pour chercher oui, pour citer non** | Instructions | Inchangée |

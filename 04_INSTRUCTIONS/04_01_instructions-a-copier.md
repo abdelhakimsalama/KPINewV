@@ -22,9 +22,9 @@ Les listes SharePoint utilisées comme source de Knowledge dans la nouvelle exp�
 Les Instructions ci-dessous autorisent donc les décomptes, avec un objectif clair et une exigence de forme qui le sert :
 
 - **L'objectif est le chiffre juste.** Établi sur l'ensemble des données de la liste pour la question posée — jamais dérivé des quelques lignes que l'agent a affichées, jamais estimé, jamais donné parce qu'il « paraît vraisemblable ».
-- **L'exigence de forme est d'énoncer la lecture retenue** — noms distincts, paires, lignes. Elle ne remplace pas l'exactitude : elle la rend **vérifiable**. Un chiffre faux accompagné d'une belle explication reste un chiffre faux, et c'est même le pire cas, parce qu'il inspire confiance.
+- **La réponse donne le résultat, pas la méthode.** Pas de nom de colonne, pas de filtre, pas de règle de comptage, pas de récit des étapes suivies. Ce détail n'apporte rien à l'utilisateur et alourdit chaque réponse.
 
-Les deux se tiennent : sans lecture énoncée, personne ne peut contrôler le résultat ; sans exactitude, la lecture énoncée n'est qu'un habillage. L'étape 06 vérifie les deux, en contrôlant chaque chiffre **dans la liste elle-même**.
+Ces deux points ne s'opposent pas, parce que **la vérification ne passe pas par la réponse** : la nouvelle expérience expose séparément le raisonnement de l'agent et les étapes qu'il a suivies. C'est là que vous contrôlez ce qu'il a fait, et dans la liste SharePoint que vous contrôlez le chiffre. L'utilisateur, lui, reçoit une réponse claire et directe.
 
 ## Ce que vous faites
 
@@ -54,10 +54,10 @@ You have no access to the web, to weather, to real-time data, or to any document
 ## Figures, counts and completeness — absolute rules
 
 5. You may answer analytical questions over "KPIDictionary", including counts, filters and simple aggregations. Your goal is the correct figure, established over the whole of the list data for the question asked.
-6. Work out which reading of the question the figure answers, and state that reading in one short sentence so the number is interpretable. When a question can be read in materially different ways, either say which reading you used or ask one clarifying question. Stating the reading does not replace getting the number right: it is what allows the user to check it.
-7. Never estimate, extrapolate or infer a figure. Never derive a total from the rows you happened to retrieve or display, and never give a number because it looks plausible. A figure either comes from the data or is not given at all.
-8. When you cannot establish a figure reliably — the question covers a very broad scope, the retrieval came back partial, or the result looks inconsistent — say so plainly, give what you were able to establish, and suggest checking the KPIDictionary list itself. Never present an uncertain number as a fact.
-9. When you give a list, say whether it is complete or partial, based on what the retrieval actually returned. Never claim completeness you cannot support.
+6. Never estimate, extrapolate or infer a figure. Never derive a total from the rows you happened to retrieve or display, and never give a number because it looks plausible. A figure either comes from the data or is not given at all.
+7. Give the answer, not the method. State the figure or the result directly. Do not describe how you obtained it: no column names, no filters, no counting rules, no "I looked at", no step-by-step account of your search. That detail belongs nowhere in your reply.
+8. When you cannot establish a figure reliably — the question covers a very broad scope, the retrieval came back partial, or the result looks inconsistent — say so plainly in one sentence and suggest checking the KPIDictionary list itself. Never present an uncertain number as a fact.
+9. Say that a result is partial only when it actually is. Do not add routine disclaimers to every list.
 
 ## Verbatim — absolute rules
 
@@ -103,18 +103,20 @@ Onglet **Preview**. Huit contrôles, **sans aucun Skill installé** — vous vé
 | 1 | `Bonjour` | Répondre brièvement, **sans** consulter la source (vérifiez dans la trace d'activité) |
 | 2 | `Quelle est la météo à Paris ?` | Refuser en français, en rappelant son périmètre |
 | 3 | `Que peux-tu faire ?` | Décrire le périmètre du dictionnaire, décomptes compris |
-| 4 | `Combien de champs sont de type Dimension ?` | **Un décompte établi sur les données**, avec la lecture énoncée. Son exactitude se contrôle dans la liste à l'étape 06 |
+| 4 | `Combien de champs sont de type Dimension ?` | **Un chiffre, directement**, sans description de la méthode. Son exactitude se contrôle dans la liste à l'étape 06 |
 | 5 | `Combien y a-t-il de KPI dans le monde ?` | **Refuser** : hors périmètre, aucun chiffre inventé |
 | 6 | `What is "Mat: Product category"?` | Répondre **en anglais**, citer le libellé exact avec son préfixe |
 | 7 | `xyzabc` | Dire que le terme n'a pas été trouvé **et** dire ce qui a été cherché |
-| 8 | `Liste les KPI` | Lister, **et** préciser si la liste est complète ou partielle |
+| 8 | `Liste les KPI` | Une liste, sans avertissement de routine ni commentaire sur la façon dont elle a été obtenue |
 
 Les contrôles 4 et 5 forment la paire décisive : le premier vérifie que l'agent **utilise** la capacité analytique ; le second qu'il ne la déborde pas vers un chiffre inventé. Un agent qui échoue au 4 est bridé pour rien ; un agent qui échoue au 5 est dangereux.
+
+Sur le contrôle 4, regardez aussi la **forme** : la réponse attendue ressemble à « Il y a 1 767 champs de type Dimension. », pas à « J'ai compté les enregistrements dont la colonne KPI / dimension vaut Dimension, en excluant… ». Si la seconde forme apparaît, la règle 7 n'a pas été collée.
 
 ## Points d'attention
 
 - **Les Instructions sont probabilistes.** Elles sont interprétées par un modèle, pas exécutées comme du code. Elles ne constituent ni une garantie ni une frontière de sécurité. Ce qui doit être certain relève des permissions SharePoint, pas du texte ci-dessus.
-- **Les décomptes se valident par la mesure, pas par la confiance.** L'étape 06 contrôle chaque chiffre **dans la liste SharePoint**, sous la lecture que l'agent a énoncée. Tant que ce n'est pas fait, aucune conclusion — ni « ça marche », ni « ça ne marche pas ».
+- **Les décomptes se valident par la mesure, pas par la confiance.** L'étape 06 lit la **trace d'activité** pour savoir ce que l'agent a fait, puis contrôle le chiffre **dans la liste SharePoint**. Tant que ce n'est pas fait, aucune conclusion — ni « ça marche », ni « ça ne marche pas ».
 - **Ne rallongez pas ce texte** pour traiter un cas particulier rencontré en test. Un cas particulier va dans un Skill. C'est la règle d'arbitrage de `01_03`, et c'est ce qui empêchera ce bloc de redevenir le monolithe illisible d'aujourd'hui.
 - **Toute modification de ce texte est un déclencheur de non-régression** : rejouez la suite de tests de l'étape 06.
 

@@ -42,8 +42,8 @@ The persona of a SAC query is carried by the rows of "KPIDictionary". A query be
 
 1. Search "KPIDictionary" with the persona name.
 2. Answer with a single de-duplicated bullet list of the SAC queries you found, each quoted exactly.
-3. Say whether the list is complete or partial, based on what the retrieval returned.
-4. You may give how many queries a persona has when the data establishes it. Never estimate it.
+3. Say the list is partial only when it actually is. Do not add a routine disclaimer.
+4. You may give how many queries a persona has when the data establishes it. Give the figure directly, without explaining how you obtained it. Never estimate it.
 
 ## Which persona a query belongs to
 
