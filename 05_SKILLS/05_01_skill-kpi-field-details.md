@@ -42,7 +42,7 @@ Answer questions about the meaning, definition, formula and type of a KPI, field
 1. A direct answer in one or two sentences.
 2. The official definition. Quote the official labels exactly; you may explain the definition in your own words in addition to quoting it, never instead of quoting it.
 3. The field type, quoted exactly: "Primary KPI", "Derived KPI" or "Dimension".
-4. The SAC queries where the field appears, each with its persona. Present them as a bullet list, and state that other queries may also carry this field.
+4. The SAC queries where the field appears, each with its persona. Present them as a bullet list, and say whether that list is complete or partial.
 5. When relevant, say in which languages the definition and formula exist.
 
 ## Formulas
@@ -61,11 +61,11 @@ Answer questions about the meaning, definition, formula and type of a KPI, field
 
 - Several different definitions for the same field name: show them all. Never merge them, never pick the longest, never elect one as the right one.
 - Several different fields matching the term: this is an ambiguity. Present each candidate with its own official labels and its own definition, and ask the user which one they mean.
-- The same field on many queries: list the queries you found, and say that others may exist.
+- The same field on many queries: list the queries you found, and say whether the list is complete or partial.
 
 ## Never
 
-- Never state how many queries carry the field, and never write "all the queries".
+- You may say how many queries carry the field when the data establishes it; say what you counted. Never estimate it, and never extrapolate from the rows you happened to see.
 - Never translate an official label in your answer.
 - Never present the MyBI value "new" as a field name: it means "new field, with no MyBI equivalent".
 - If you found the entry through its former MyBI name, say so at the top of the answer before anything else.
@@ -88,7 +88,7 @@ Six contrôles, dans **Preview**, trace d'activité ouverte à chaque fois.
 
 | # | Question | Le Skill doit-il se charger ? | Ce que la réponse doit montrer |
 |---|---|---|---|
-| 1 | `What does "Plant: Plant" mean?` | **Oui** | La définition officielle, le type `Dimension`, des requêtes porteuses, **aucun décompte** |
+| 1 | `What does "Plant: Plant" mean?` | **Oui** | La définition officielle, le type `Dimension`, les requêtes porteuses (valeur de référence : **33**) |
 | 2 | `Que signifie "Mat: Product category" ?` | **Oui** | Réponse en français, libellé anglais cité tel quel, définition mentionnant alcool / parfum / soin |
 | 3 | `Quelle est la formule de "Downstream service rate in quantity (Argon)" ?` | **Oui** | Formule **en bloc de code**, verbatim, sauts de ligne préservés |
 | 4 | `What is "% Backorders"?` | **Oui** | Définition anglaise ; si la définition française manque, il le **dit** au lieu de la produire |
@@ -104,11 +104,11 @@ Les contrôles 5 et 6 sont les plus utiles : ils vérifient que le Skill **ne d�
 | Ne se charge pas sur les questions françaises | Ajoutez d'autres formulations françaises dans la description |
 | Se charge aussi sur « quelle requête contient X » | Renforcez le « Do NOT use » de la description, et vérifiez celle de `sac-query-lookup` |
 | Écrit une définition quand il n'y en a pas | La section « When information is missing » n'a pas été collée en entier |
-| Donne le nombre de requêtes porteuses | Vérifiez la section « Never » ici, et la règle 5 des Instructions |
+| Estime un nombre au lieu de l'établir | Vérifiez la section « Never » ici, et la règle 6 des Instructions |
 
 ## Critères de fin d'étape
 
 - [ ] Le Skill `kpi-field-details` existe et est enregistré.
 - [ ] Les contrôles 1 à 4 se chargent et rendent le format attendu.
 - [ ] Les contrôles 5 et 6 **ne** le chargent **pas**.
-- [ ] Aucune réponse ne contient de décompte ni de tableau Markdown.
+- [ ] Aucune réponse ne contient de tableau Markdown, ni de chiffre estimé.

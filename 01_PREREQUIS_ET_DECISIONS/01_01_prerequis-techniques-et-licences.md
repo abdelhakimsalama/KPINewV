@@ -20,7 +20,7 @@
 
 ## 2. Réglages d'environnement à vérifier
 
-**Recherche Dataverse activée** — c'est le prérequis le plus souvent oublié. Une liste SharePoint utilisée comme source de Knowledge s'appuie sur la recherche Dataverse de l'environnement. Si elle est désactivée, la source se connectera mais ne rendra rien, et le symptôme ressemblera à une erreur de configuration de l'agent. **[À VÉRIFIER]**
+**Recherche Dataverse activée** — prérequis vérifié et documenté, le plus souvent oublié. Microsoft l'énonce explicitement : *« Copilot Studio agents require Dataverse search to use a SharePoint list as a knowledge source. If Dataverse search is turned off in the environment, the list can't be queried and no results are returned »* **[OFFICIEL — [SharePoint Knowledge Sources Don't Return Results](https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/knowledge/sharepoint-no-response)]**. Si elle est désactivée, la source se connecte mais ne rend rien, et le symptôme ressemble à une erreur de configuration de l'agent.
 
 > Power Platform admin center > **Environnements** > votre environnement > **Paramètres** > **Produit** > **Fonctionnalités** > vérifier que la **recherche Dataverse** est activée.
 
@@ -44,7 +44,7 @@ Vous n'avez pas besoin de migrer quoi que ce soit — le nouvel agent se constru
 
 1. **L'URL exacte de la liste** `KPIDictionary` (site `ReportingTower10`).
 2. **Les libellés exacts des 12 colonnes métier**, y compris `MyBI  Field name - EN` qui contient un **double espace** dans son libellé. Ce détail compte pour l'étape 03.
-3. **Les cas de test métier** que l'agent actuel réussit, pour ne pas régresser. Ils sont déjà repris dans `06_02`.
+3. **Les cas de test métier et leurs valeurs de référence.** C'est l'actif le plus précieux de l'ancien projet : les décomptes établis en runtime par l'ancien moteur (188 `Primary KPI`, 509 `Derived KPI`, 1 767 `Dimension`, 192 renommages distincts, 39 requêtes SAC, 6 personas, 2 requêtes couvrant `duty free` et `duty paid`…) servent d'**oracle** pour vérifier les réponses analytiques du nouvel agent. Ils sont repris dans `06_02`.
 
 Tout le reste de l'agent actuel — instructions, description d'outil, flux, topics — n'est **pas** à reprendre. C'est un choix : reproduire l'ancienne architecture sous une autre forme est précisément ce que ce projet évite.
 

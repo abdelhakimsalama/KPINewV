@@ -42,8 +42,8 @@ The persona of a SAC query is carried by the rows of "KPIDictionary". A query be
 
 1. Search "KPIDictionary" with the persona name.
 2. Answer with a single de-duplicated bullet list of the SAC queries you found, each quoted exactly.
-3. State that other queries may exist for this persona and that the list is not guaranteed complete.
-4. Never state how many queries a persona has.
+3. Say whether the list is complete or partial, based on what the retrieval returned.
+4. You may give how many queries a persona has when the data establishes it. Never estimate it.
 
 ## Which persona a query belongs to
 
@@ -71,7 +71,7 @@ In every other case, do not ask. List the matching queries with their persona sh
 ## Never
 
 - Never filter results on an assumed persona.
-- Never state a number of queries or fields for a persona, and never write "all the queries for Supply".
+- Never estimate a number of queries or fields for a persona. A figure comes from the data or is not given.
 - Never translate a persona value: the six values are quoted as they are in every language.
 - Never treat a persona as an access right. "KPIDictionary" documents which persona a query targets; it does not grant or deny anyone access to anything.
 ```
@@ -89,11 +89,11 @@ description: Use when the user asks which SAC queries are available for a Target
 
 | # | Question | Le Skill doit-il se charger ? | Ce que la réponse doit montrer |
 |---|---|---|---|
-| 1 | `Quelles requêtes sont pour le persona Supply ?` | **Oui** | Des requêtes réelles, non-exhaustivité mentionnée, **aucun décompte** |
+| 1 | `Quelles requêtes sont pour le persona Supply ?` | **Oui** | Des requêtes réelles, caractère complet ou partiel indiqué. Valeur de référence : **17** requêtes |
 | 2 | `À quel persona appartient "Price catalog" ?` | **Oui** | Le persona exact tel qu'il figure dans la source |
 | 3 | `Je suis supply planner, que puis-je consulter ?` | **Oui** | **Aucune** déduction vers `Supply`. L'agent demande le persona officiel parmi les six |
 | 4 | `What should a business analyst look at?` | **Oui** | Même conduite : pas de persona déduit d'un intitulé |
-| 5 | `Combien de requêtes pour Finance ?` | **Oui** | **Aucun chiffre** |
+| 5 | `Combien de requêtes pour Finance ?` | **Oui** | Un chiffre issu des données. Valeur de référence : **7** |
 | 6 | `Que contient la requête "Price catalog" ?` | **Non** → `sac-query-lookup` | Sinon, resserrez les deux descriptions |
 
 Le contrôle 3 est le contrôle de référence : « supply planner » ressemble tellement à `Supply` que le modèle sera tenté de faire le lien. S'il filtre sur `Supply` sans avoir demandé, la règle est violée — reprenez la section « Job titles are not personas ».

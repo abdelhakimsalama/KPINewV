@@ -28,25 +28,23 @@ Ne basculez pas sur une impression. Ces cinq conditions doivent être vraies **e
 |---|---|---|
 | 1 | La suite de tests complète passe aux seuils de `06_03` | Fiche de décision signée |
 | 2 | Deux semaines de pilote sans **aucune** invention signalée | Retours du groupe pilote + onglet Monitor |
-| 3 | Aucun chiffre ni aucune liste « complète » produits pendant le pilote | Relecture des échanges dans Monitor |
+| 3 | Aucun chiffre estimé, aucune couverture affirmée sans preuve pendant le pilote | Relecture des échanges dans Monitor |
 | 4 | Les utilisateurs pilotes préfèrent le nouvel agent, ou le jugent équivalent | Demandez-le explicitement, ne le supposez pas |
-| 5 | Les écarts fonctionnels assumés sont **acceptés par le métier**, par écrit | Voir la section suivante |
+| 5 | Le registre de `10_01` est rempli et **accepté par le métier**, par écrit | Voir la section suivante |
 
 Le critère 5 est celui qu'on oublie et qui fait revenir un projet en arrière trois mois plus tard.
 
-## Ce que le métier doit accepter, explicitement
+## Ce que le métier doit valider, explicitement
 
-Trois capacités de l'ancien agent disparaissent. Elles doivent être présentées et acceptées **avant** la bascule, pas découvertes après.
+**Ce que vous présentez dépend de ce que vous avez mesuré**, et de rien d'autre. Prenez le registre de `10_01` rempli à l'étape 06, et présentez trois choses :
 
-| Ce que faisait l'ancien agent | Ce que fait le nouveau | Comment le présenter |
-|---|---|---|
-| Annonçait un nombre de champs renommés | Refuse de compter et renvoie vers la liste | Le chiffre annoncé était **faux** (202 au lieu de 192) : on remplace une réponse fausse par une réponse honnête |
-| Donnait une intersection prouvée sur plusieurs critères | Donne ce qui est démontré, puis la couverture partielle | On ne perd pas la réponse, on perd la **garantie** — et on gagne la mention explicite de ce qui n'est pas garanti |
-| Signalait une troncature avec le total réel | Signale en permanence que la liste peut être incomplète | L'avertissement devient constant au lieu d'être conditionnel |
+1. **Les capacités analytiques déclarées fiables** (3 essais réussis sur 3) — annoncez-les comme telles, elles font partie du produit.
+2. **Celles classées à surveiller** (2 sur 3) — nommez-les, avec la réserve qui les accompagne.
+3. **Celles déclarées non fiables**, s'il y en a — nommez-les, avec les preuves, et dites que la liste `KPIDictionary` fait foi sur ces points.
 
-**Formulation utile en réunion :** l'ancien agent promettait plus qu'il ne pouvait tenir, et se trompait sans le dire. Le nouveau promet exactement ce qu'il peut tenir. Pour un dictionnaire de référence, c'est le bon arbitrage.
+**Un point à porter en réunion dans tous les cas :** l'ancien agent annonçait « 202 champs renommés ». Le chiffre était **faux** — la valeur réelle est 192 — et aucun utilisateur ne pouvait s'en apercevoir. Que le nouvel agent trouve 192, ou qu'il dise ne pas pouvoir établir le chiffre, les deux valent mieux qu'un faux affirmé. Ce que le projet garantit désormais, ce n'est pas l'absence d'erreur : c'est qu'un chiffre vient des données et que l'agent dit ce qu'il compte.
 
-Si le métier refuse l'un de ces trois points, **ne basculez pas** : allez lire `10_02`, qui décrit ce qu'il faudrait ajouter pour restaurer la capacité concernée, et ce que cela coûte.
+Si le métier juge qu'une capacité classée non fiable est indispensable, **ne basculez pas** : allez lire `10_02`, qui décrit ce qu'il faudrait ajouter et ce que cela coûte.
 
 ## Retirer l'ancien agent
 
@@ -75,7 +73,7 @@ Tant que l'ancien agent existe, le repli coûte quelques minutes. C'est précis�
 ## Critères de fin d'étape
 
 - [ ] Les cinq critères de bascule sont vrais simultanément.
-- [ ] Les trois écarts fonctionnels sont acceptés **par écrit** par le métier.
+- [ ] Le registre de `10_01`, rempli à partir des mesures, est accepté **par écrit** par le métier.
 - [ ] L'ancien agent est retiré de ses canaux, puis désactivé.
 - [ ] Le plan de repli est connu de l'équipe.
 - [ ] Je passe au dossier `08_MONITORING_ET_COUTS`.

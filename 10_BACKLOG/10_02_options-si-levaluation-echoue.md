@@ -32,7 +32,7 @@ Ces quatre leviers coûtent une édition de fichier et une exécution de tests. 
 
 **Ce que vous faites :** ajoutez les entrées observées dans le Skill 4 (voir `05_04`), sur la base du relevé de `08_01`.
 
-**Coût :** l'édition d'un fichier Markdown, plus la famille E rejouée. Aucune complexité ajoutée. **C'est presque toujours la bonne première réponse.**
+**Coût :** l'édition d'un fichier Markdown, plus la famille F rejouée. Aucune complexité ajoutée. **C'est presque toujours la bonne première réponse.**
 
 ### Option B — Découper ou fusionner des Skills *(coût : faible)*
 
@@ -40,11 +40,11 @@ Ces quatre leviers coûtent une édition de fichier et une exécution de tests. 
 
 **Ce que vous faites :** découpez un Skill trop large en deux périmètres nets, ou fusionnez deux Skills qui se disputent les mêmes questions.
 
-**Coût :** une réécriture de fichiers et la famille G rejouée en entier. La plateforme autorise 100 Skills : la contrainte n'est pas le nombre, c'est la netteté des frontières.
+**Coût :** une réécriture de fichiers et la famille H rejouée en entier. La plateforme autorise 100 Skills : la contrainte n'est pas le nombre, c'est la netteté des frontières.
 
-### Option C — Restaurer les décomptes et l'exhaustivité *(coût : élevé — c'est un changement d'architecture)*
+### Option C — Ajouter un moteur de calcul externe *(coût : élevé — c'est un changement d'architecture)*
 
-**Quand :** et seulement quand le métier refuse formellement la limite 1 ou 2 de `10_01`, par écrit, avec un cas d'usage précis à l'appui.
+**Quand :** seulement si le registre de `10_01` établit, **mesures à l'appui**, qu'une capacité analytique indispensable au métier n'est pas fiable — et que les quatre leviers gratuits ont échoué. Tant que le registre est vide ou ne contient que des cas « à surveiller », cette option n'a pas lieu d'être : la plateforme couvre nativement les décomptes et les agrégations.
 
 **Ce que cela suppose :** un composant capable de parcourir l'intégralité des lignes et de calculer. C'est-à-dire, concrètement, un **outil** — connecteur, workflow ou exécution de code — qui rend des données brutes que l'agent ne fait que restituer.
 
@@ -57,7 +57,7 @@ Ces quatre leviers coûtent une édition de fichier et une exécution de tests. 
 | | Une consommation de crédits supérieure à chaque question |
 | | La simplicité, qui était l'objectif du projet |
 
-**Avant de choisir cette option, posez la vraie question :** combien de questions réelles, sur un mois d'usage mesuré dans Monitor, exigent un décompte exact ? Si la réponse est « trois par mois », la bonne solution est un lien vers la liste SharePoint dans la réponse de l'agent — pas un moteur de calcul.
+**Avant de choisir cette option, posez les deux vraies questions :** combien de questions réelles, sur un mois d'usage mesuré dans Monitor, exigent le décompte défaillant ? Et l'écart mesuré est-il de nature à tromper l'utilisateur, ou seulement à l'imprécision près ? Si la réponse est « trois questions par mois, écart marginal », la bonne solution est un lien vers la liste SharePoint dans la réponse — pas un moteur de calcul.
 
 ### Option D — Deuxième source de Knowledge *(coût : moyen, risque élevé)*
 
@@ -81,7 +81,8 @@ Ces quatre leviers coûtent une édition de fichier et une exécution de tests. 
 |---|---|
 | Allonger les Instructions à chaque échec | Elles sont chargées à chaque tour ; c'est le mécanisme exact qui a saturé l'ancien agent |
 | Ajouter un Skill par cas particulier | Multiplie les occasions de se déclencher au mauvais moment ; cinq périmètres nets valent mieux que quinze approximatifs |
-| Autoriser l'agent à estimer un nombre « approximatif » | Un chiffre estimé sera lu comme un fait. C'est précisément le défaut que le projet interdit |
+| Autoriser l'agent à estimer un nombre « approximatif » | Un chiffre estimé sera lu comme un fait. L'agent a le droit de compter à partir des données, jamais d'estimer |
+| Interdire une capacité parce qu'un essai a échoué | Le comportement est probabiliste : c'est 3 essais qui décident, pas un |
 | Reconstruire l'ancienne architecture composant par composant | Vous retrouveriez tous ses défauts, plus le coût de la migration |
 | Ajouter un composant « au cas où » | Chaque composant a un coût permanent de compréhension et de maintenance |
 

@@ -21,10 +21,10 @@ Une règle va dans les **Instructions** si elle est vraie dans **100 %** des con
 | 2 | **Zéro invention** — n'affirmer que ce que la source montre | Instructions | Inchangée. **C'est la règle la plus importante du projet** |
 | 3 | **Verbatim** — citer les valeurs officielles exactement, coquilles et préfixes compris | Instructions | Inchangée |
 | 4 | **Ne jamais choisir à la place de l'utilisateur** | Instructions + Skill 04 | Le principe est permanent ; le protocole d'ambiguïté est situationnel |
-| 5 | **Ne jamais compter soi-même** | Instructions | **REFORMULÉE → interdiction de compter tout court** (voir ci-dessous) |
+| 5 | **Ne jamais compter soi-même** | Instructions | **PRÉCISÉE → un chiffre vient des données, jamais d'une estimation** (voir ci-dessous) |
 | 6 | **Persona prouvé, jamais inféré** | Instructions + Skill 05 | Le principe est permanent ; le détail des six valeurs et la conduite à tenir sont dans le Skill |
 | 7 | **Absence honnête** — dire « non trouvé » et ce qui a été cherché | Instructions | Inchangée |
-| 8 | **Troncature toujours annoncée avec le total réel** | Instructions | **REFORMULÉE → avertissement permanent de non-exhaustivité** (voir ci-dessous) |
+| 8 | **Troncature toujours annoncée avec le total réel** | Instructions | **PRÉCISÉE → dire si une liste est complète ou partielle, et le dire quand un chiffre n'est pas établissable** (voir ci-dessous) |
 | 9 | **`new` n'est pas un nom de champ** | Instructions + Skill 02 | Rappel court en Instructions, traitement détaillé dans le Skill mapping |
 | 10 | **Synonymes : table figée, l'agent n'en crée pas** | Skill 04 | La table devient un tableau Markdown dans le Skill |
 | 11 | **Langue de réponse = langue du message ; traduire pour chercher oui, pour citer non** | Instructions | Inchangée |
@@ -32,19 +32,19 @@ Une règle va dans les **Instructions** si elle est vraie dans **100 %** des con
 | 13 | **Pas de tableaux Markdown** dans les réponses | Instructions | Inchangée |
 | 14 | **Hors périmètre annoncé comme tel** — pas de web, pas de temps réel | Instructions | Inchangée |
 
-## Les deux règles qui changent de nature — et pourquoi c'est un progrès
+## Les deux règles qui se précisent — et pourquoi ce n'est pas un renoncement
 
-### Règle 5 : de « ne compte pas toi-même » à « ne compte pas »
+### Règle 5 : de « ne compte pas toi-même » à « un chiffre vient des données »
 
-**Avant**, un moteur externe fournissait les décomptes (`typeCounts`) et la règle disait à l'agent de ne jamais les recalculer. **Maintenant**, il n'y a plus de fournisseur de décompte fiable. La règle devient donc : **l'agent ne donne aucun chiffre, aucun total, et n'emploie ni « tous » ni « la liste complète »**.
+**Avant**, un moteur externe fournissait les décomptes et la règle interdisait à l'agent de les recalculer. **Maintenant**, la source de Knowledge prend nativement en charge les requêtes analytiques et d'agrégation sur la liste **[OFFICIEL, préversion]**. L'agent a donc le droit de répondre à « combien » — à une condition absolue : **le chiffre vient des données de la liste, jamais d'une estimation, d'une extrapolation ou d'un échantillon**.
 
-Ce n'est pas un affaiblissement de la véracité, c'est l'inverse. L'agent actuel annonce « 202 champs renommés » — un chiffre que le projet sait faux (le nombre réel de renommages distincts est 192). Le nouvel agent ne produira plus ce genre d'erreur, parce qu'il n'a plus le droit d'affirmer un nombre.
+L'intention d'origine est intégralement préservée. Ce que la règle protégeait, ce n'était pas l'absence de chiffres : c'était l'absence de **chiffres fabriqués**. C'est exactement ce que dit la nouvelle formulation, sans priver le produit d'une capacité que la plateforme offre.
 
-### Règle 8 : de « annonce la troncature » à « annonce que ce n'est jamais garanti complet »
+### Règle 8 : de « annonce la troncature » à « dis si c'est complet ou partiel »
 
-**Avant**, le moteur signalait explicitement une troncature et donnait le total réel. **Maintenant**, une recherche rend un sous-ensemble pertinent sans indicateur de complétude. La règle devient : **toute réponse de type liste porte la mention que d'autres entrées peuvent exister**.
+**Avant**, le moteur signalait explicitement une troncature et donnait le total réel. **Maintenant**, l'agent doit dire, pour chaque liste qu'il produit, si elle est complète ou partielle au vu de ce qui est réellement remonté — et le dire clairement lorsqu'il ne parvient pas à établir un chiffre de façon fiable.
 
-L'utilisateur est ainsi averti en permanence, au lieu de l'être seulement quand un indicateur technique se déclenchait.
+Deux situations à surveiller particulièrement, documentées par Microsoft : les questions portant sur **la totalité** d'une grande liste peuvent être limitées en débit ou très lentes **[OFFICIEL]**, et un modèle de langage prédit au lieu de calculer. C'est précisément ce que l'étape 06 mesure, avec des valeurs de référence connues.
 
 ## Les règles qui n'ont plus d'objet
 
@@ -52,9 +52,9 @@ L'utilisateur est ainsi averti en permanence, au lieu de l'être seulement quand
 |---|---|
 | Cascade à 7 étages, `matchLevel`, `matchMode` | **Supprimée** — c'était le contrat d'un moteur qui n'existe plus |
 | Lecture des clés `synonymApplied`, `conceptMatches`, `partialWithout`, `evidenceCount` | **Supprimée** — même motif |
-| Mode `intersect` avec preuves par critère | **Remplacée** — le croisement multi-critères devient une réponse explicitement non garantie (Skill 03) |
-| Mode `renamed` global (« toutes les paires ») | **Remplacée** — l'agent montre des renommages trouvés, jamais la liste entière (Skill 02) |
 | Plafonds de sortie (40 / 60 / 200 / 250 lignes) | **Sans objet** |
+
+En revanche, les **besoins fonctionnels** que ces mécanismes servaient restent au périmètre : le croisement multi-critères (Skill 03), la liste des renommages (Skill 02) et les décomptes sont conservés comme cas d'usage, et leur fiabilité est établie par l'étape 06. Ce qui disparaît, ce sont les mécanismes internes d'un moteur ; pas les questions que les utilisateurs posent.
 
 **Bénéfice de maintenance :** la désynchronisation permanente entre les instructions et le contrat d'un moteur externe — un défaut ouvert du projet actuel — disparaît, puisqu'il n'y a plus de contrat à synchroniser.
 

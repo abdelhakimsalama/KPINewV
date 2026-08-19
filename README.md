@@ -26,19 +26,19 @@ Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle O
 | [`01_PREREQUIS_ET_DECISIONS`](01_PREREQUIS_ET_DECISIONS/) | Prérequis | Accès, licences, décisions d'architecture, répartition des règles |
 | [`02_CREATION_DE_LAGENT`](02_CREATION_DE_LAGENT/) | Création | Un agent qui répond, avec le bon modèle |
 | [`03_KNOWLEDGE_SHAREPOINT`](03_KNOWLEDGE_SHAREPOINT/) | Données | L'agent lit `KPIDictionary` en direct |
-| [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 23 règles globales, prêtes à copier |
+| [`04_INSTRUCTIONS`](04_INSTRUCTIONS/) | Comportement permanent | Les 24 règles globales, prêtes à copier |
 | [`05_SKILLS`](05_SKILLS/) | Comportements situationnels | Les 5 Skills, chacun avec son `SKILL.md` complet |
-| [`06_EVALUATION`](06_EVALUATION/) | Qualité | 43 cas de test, seuils de publication, non-régression |
+| [`06_EVALUATION`](06_EVALUATION/) | Qualité | 52 cas de test avec valeurs de référence, seuils, non-régression |
 | [`07_PUBLICATION`](07_PUBLICATION/) | Mise en service | L'agent publié dans Teams, bascule depuis l'ancien |
 | [`08_MONITORING_ET_COUTS`](08_MONITORING_ET_COUTS/) | Exploitation | Ce que fait l'agent, ce qu'il coûte |
 | [`09_ALM_ET_MAINTENANCE`](09_ALM_ET_MAINTENANCE/) | Durée de vie | Modifier une règle sans effet de bord |
-| [`10_BACKLOG`](10_BACKLOG/) | Lucidité | Ce que l'architecture ne fait pas, et quoi faire alors |
+| [`10_BACKLOG`](10_BACKLOG/) | Lucidité | Le registre des limites **mesurées**, et quoi faire alors |
 
 ## Les trois fichiers à lire en premier
 
 1. [`00_02_architecture-en-un-coup-doeil.md`](00_LISEZ-MOI/00_02_architecture-en-un-coup-doeil.md) — l'image complète de l'agent.
 2. [`01_02_journal-des-decisions-darchitecture.md`](01_PREREQUIS_ET_DECISIONS/01_02_journal-des-decisions-darchitecture.md) — pourquoi il a cette forme, et ce qui a été écarté.
-3. [`10_01_limites-assumees-et-cas-abandonnes.md`](10_BACKLOG/10_01_limites-assumees-et-cas-abandonnes.md) — ce qu'il ne fera pas, à faire valider par le métier **avant** la bascule.
+3. [`10_01_limites-a-confirmer-par-les-tests.md`](10_BACKLOG/10_01_limites-a-confirmer-par-les-tests.md) — le registre des limites, vide au départ : **rien n'y entre sans mesure**.
 
 ## Le principe directeur
 
@@ -46,7 +46,8 @@ Agent « KPI Dictionary Assistant »  ── harness GitHub Copilot · modèle O
 
 Les deux conséquences les plus importantes de ce principe :
 
-- **L'agent ne compte pas et ne promet jamais une liste complète.** Sans moteur de calcul, tout chiffre serait une estimation présentée comme un fait. L'agent montre ce qu'il a trouvé et signale ce qui n'est pas garanti.
+- **Aucune capacité n'est retirée par hypothèse.** Les listes SharePoint en Knowledge prennent nativement en charge les requêtes analytiques et d'agrégation, décomptes compris ([documentation officielle](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists), préversion). Les décomptes et croisements restent donc au périmètre et se valident par la mesure, contre des valeurs de référence connues. Une limitation ne s'écrit qu'après avoir été prouvée.
+- **Un chiffre vient des données, jamais d'une estimation.** C'est la seule frontière absolue sur ce sujet — et c'est elle qui protège l'utilisateur, pas une interdiction de compter.
 - **Le dépôt est la source du comportement, pas son reflet.** Les Instructions et les Skills sont du texte : on les modifie ici d'abord, on les reporte ensuite dans le produit.
 
 ## Conventions

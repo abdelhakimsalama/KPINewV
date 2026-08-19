@@ -32,14 +32,14 @@ Answer questions about MyBI-to-SAC field and report renaming, using only "KPIDic
 
 1. Search with the name the user gave, whichever side it comes from. The MyBI columns and the SAC columns are both searchable, so an old name finds its row and so does a current one.
 2. If the user gave a French label, search it as is; if nothing comes back, try the English equivalent when you can identify one reliably.
-3. For a general question about renamed fields, search for representative renaming examples. Never attempt to produce the whole set: see "Never" below.
+3. For a general question about renamed fields, or for a count of them, query "KPIDictionary" analytically over the MyBI and SAC columns. Base the answer on what the list data establishes.
 
 ## What the answer must contain, in this order
 
 1. A direct answer in one or two sentences: the old name and the current name.
 2. The mapping itself, with the former MyBI name and, for the SAC side, BOTH official labels, English and French. This is the one case where you quote both languages whatever the language of the question. If only one SAC label exists, quote it and say which language it is.
 3. The SAC query concerned and the field type.
-4. A statement that other renamings may exist beyond the ones shown.
+4. Whether what you gave is the complete set or a partial view, based on what the retrieval actually returned.
 
 ## The literal value "new"
 
@@ -58,11 +58,21 @@ An empty MyBI column is not the same as "new". It means the correspondence is no
 - The same MyBI name mapping to several SAC fields: show every mapping. Never pick one.
 - The same SAC field appearing on several queries: give the mapping once, then list the queries you found.
 
+## Counting renamed fields
+
+The user may legitimately ask how many fields were renamed. Answer it from the data:
+
+1. Count distinct former MyBI field names that map to a different SAC name. Distinct names, not rows: the same field repeats across queries, so counting rows would inflate the figure.
+2. Say what you counted, in one short sentence, so the user can tell what the number means. For example: distinct MyBI field names that have a different SAC name.
+3. Rows whose MyBI value is "new" or empty are NOT renamings and must be excluded from that count.
+4. If you cannot establish the figure reliably, say so and give what you could establish. Never estimate, and never present an uncertain number as a fact.
+
 ## Never
 
-- Never state how many fields were renamed. Never write "all the renamed fields", "the complete mapping list" or any total. If the user explicitly asks for a count or the full list, say that you cannot guarantee completeness and cannot give a number, show the renamings you found as a partial view, and suggest consulting the KPIDictionary list itself for a definitive count.
+- Never estimate a number, and never extrapolate one from the rows you happened to see.
 - Never translate or correct an official label on either side of the mapping.
 - Never infer a renaming from a resemblance between two names. Only a row in "KPIDictionary" establishes a mapping.
+- Never count a row whose MyBI value is "new" or empty as a renaming.
 ```
 
 ## Le fichier `SKILL.md` complet
@@ -82,11 +92,21 @@ description: Use when the user asks how a MyBI field or report was renamed in SA
 |---|---|---|---|
 | 1 | `Comment s'appelait "Downstream service rate in quantity (Argon)" dans MyBI ?` | **Oui** | L'ancien nom `Service Rate (Quantity)`, et **les deux** libellés SAC |
 | 2 | `What is "Received (line)" called in MyBI?` | **Oui** | « nouveau champ, pas d'équivalent MyBI » — **jamais** le mot `New` présenté comme un nom |
-| 3 | `Combien de champs ont été renommés ?` | **Oui** | **Aucun chiffre.** Refus explicite du décompte, exemples partiels, renvoi vers la liste |
-| 4 | `Quels champs ont été renommés ?` | **Oui** | Des exemples, avec mention que d'autres existent |
+| 3 | `Combien de champs ont été renommés ?` | **Oui** | **Un chiffre issu des données**, avec l'énoncé de ce qui est compté. Valeur de référence : **192** noms MyBI distincts renommés. Un écart n'est pas éliminatoire ici, il est **mesuré** à l'étape 06 |
+| 4 | `Quels champs ont été renommés ?` | **Oui** | Une liste, avec mention explicite du caractère complet ou partiel |
 | 5 | `Que signifie "Plant: Plant" ?` | **Non** → `kpi-field-details` | Sinon, resserrez la description |
 
-Le contrôle 3 est le plus important de tout le projet : il vérifie la décision DA-04. L'agent actuel répond « 202 », un chiffre faux. Le nouvel agent doit **refuser de compter**. Si un nombre apparaît, ne poursuivez pas : reprenez la règle 5 des Instructions et la section « Never » ci-dessus.
+Le contrôle 3 est le plus instructif du projet. L'ancien agent répondait **202**, un chiffre faux — il comptait des quadruplets au lieu de renommages distincts. La bonne réponse est **192**.
+
+Trois issues possibles, et chacune veut dire quelque chose :
+
+| Ce que répond l'agent | Interprétation | Suite |
+|---|---|---|
+| **192**, en disant ce qu'il compte | La capacité analytique fonctionne sur ce cas | Consignez-le, et confirmez sur les autres décomptes de l'étape 06 |
+| Un autre chiffre | La requête analytique n'a pas la bonne définition du « renommage » | Précisez la section « Counting renamed fields » ci-dessus, puis re-mesurez |
+| Il refuse ou il estime | Soit la règle est trop restrictive, soit la capacité ne répond pas ici | Vérifiez d'abord les règles 5 à 7 des Instructions, puis documentez si le comportement persiste |
+
+Ce qui serait **éliminatoire**, c'est un chiffre présenté avec assurance sans que l'agent puisse dire d'où il vient.
 
 ## Ajustements courants
 
@@ -94,12 +114,13 @@ Le contrôle 3 est le plus important de tout le projet : il vérifie la décisio
 |---|---|
 | `New` présenté comme un nom de champ | La section « The literal value new » n'a pas été collée, ou la règle 10 des Instructions manque |
 | Un seul libellé SAC restitué | Renforcez le point 2 de « What the answer must contain » |
-| Un décompte apparaît | Vérifiez « Never » ici **et** les règles 5 à 7 des Instructions |
+| Un décompte manifestement faux | Précisez « Counting renamed fields » : le plus souvent, l'agent compte des lignes au lieu de noms distincts |
+| L'agent refuse de compter | Vérifiez que la règle 5 des Instructions a bien été collée : elle **autorise** les décomptes issus des données |
 | Se charge sur les questions de définition | Renforcez le « Do NOT use » des deux descriptions concernées |
 
 ## Critères de fin d'étape
 
 - [ ] Le Skill `mybi-sac-mapping` existe et est enregistré.
 - [ ] Le contrôle 2 ne présente jamais `New` comme un nom de champ.
-- [ ] **Le contrôle 3 ne produit aucun chiffre.**
+- [ ] **Le contrôle 3 produit un chiffre issu des données, et l'agent dit ce qu'il compte.** L'écart éventuel avec 192 est consigné pour l'étape 06.
 - [ ] Le contrôle 5 ne charge pas ce Skill.

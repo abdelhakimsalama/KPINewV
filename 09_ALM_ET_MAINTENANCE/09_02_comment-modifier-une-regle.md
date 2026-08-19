@@ -40,10 +40,10 @@ L'ordre compte : le dépôt d'abord, le produit ensuite. C'est ce qui garantit q
 
 | Nature de la modification | Ce que vous rejouez |
 |---|---|
-| Une règle des Instructions | Les familles B et C, plus les cas liés à la règle touchée |
-| Le contenu d'un Skill | Les cas de ce Skill, plus B et C |
-| **Une description de Skill** | **La famille G en entier** — une description modifiée déplace les frontières entre Skills |
-| La table de vocabulaire | La famille E en entier, plus D1 |
+| Une règle des Instructions | Les familles B, C et D, plus les cas liés à la règle touchée |
+| Le contenu d'un Skill | Les cas de ce Skill, plus B, C et D |
+| **Une description de Skill** | **La famille H en entier** — une description modifiée déplace les frontières entre Skills |
+| La table de vocabulaire | La famille F en entier, plus E1 et D5 |
 | **Le modèle** | **La suite complète, deux fois** |
 
 Les deux lignes en gras sont celles qui produisent des effets de bord invisibles. Une description élargie peut faire capter à un Skill les questions d'un autre, sans qu'aucune réponse ne paraisse fausse — jusqu'au jour où la mise en forme dérive.
@@ -56,7 +56,7 @@ Les deux lignes en gras sont celles qui produisent des effets de bord invisibles
 ```
 Skill 4 : ajout du synonyme "enseigne" -> Plant: Plant
 Motif : 12 recherches infructueuses en septembre (relevé Monitor)
-Tests : famille E et D1 rejouées, 100 %
+Tests : famille F et E1 rejouées, 100 %
 ```
 
 Le motif compte plus que le contenu du changement : dans un an, le diff dira **quoi**, seul le message dira **pourquoi**.
@@ -64,6 +64,8 @@ Le motif compte plus que le contenu du changement : dans un an, le diff dira **q
 ## Trois situations fréquentes, traitées
 
 **« L'agent se trompe sur un cas précis. »** Vérifiez d'abord si la donnée existe dans `KPIDictionary`. Dans la majorité des cas, ce n'est pas une règle à corriger mais une donnée absente ou ambiguë. Corrigez la liste, pas l'agent.
+
+**« L'agent donne un décompte faux. »** Regardez **ce qu'il a compté** avant de toucher à une règle : compter des lignes au lieu de valeurs distinctes est l'erreur n° 1, et c'est exactement celle que faisait l'ancien moteur (202 au lieu de 192). La correction est une précision de définition dans le Skill concerné, pas une interdiction de compter.
 
 **« L'agent respecte la règle 9 fois sur 10. »** C'est la variabilité normale d'un comportement probabiliste, pas un bug ponctuel. N'ajoutez surtout pas une règle supplémentaire : empiler dilue au lieu de stabiliser. Deux leviers, dans l'ordre — rendre la règle existante plus courte et plus explicite, puis changer de modèle et re-mesurer.
 
@@ -74,7 +76,7 @@ Le motif compte plus que le contenu du changement : dans un an, le diff dira **q
 Quel que soit le besoin exprimé, trois choses ne se négocient pas, sauf à réviser explicitement `01_02` :
 
 1. **Ajouter une deuxième source de Knowledge** — l'origine d'une réponse deviendrait indécidable.
-2. **Autoriser l'agent à compter** — sans moteur de calcul, tout chiffre serait une estimation présentée comme un fait.
+2. **Autoriser l'agent à estimer un chiffre** — un nombre vient des données ou n'est pas donné. Compter depuis la liste est permis ; extrapoler ne l'est jamais.
 3. **Laisser l'agent choisir seul entre deux candidats** — c'est se tromper une fois sur deux avec assurance.
 
 Si l'une de ces trois interdictions devient réellement bloquante pour le métier, ce n'est plus une modification : c'est un changement d'architecture. Il se traite dans `10_02`.
@@ -83,5 +85,5 @@ Si l'une de ces trois interdictions devient réellement bloquante pour le métie
 
 - [ ] Je sais placer une modification au bon endroit.
 - [ ] Je connais l'ordre : dépôt, puis produit, puis tests, puis publication, puis commit.
-- [ ] Je sais qu'une description modifiée impose de rejouer toute la famille G.
+- [ ] Je sais qu'une description modifiée impose de rejouer toute la famille H.
 - [ ] Je passe au dossier `10_BACKLOG`.

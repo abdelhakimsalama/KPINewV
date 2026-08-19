@@ -53,18 +53,22 @@ Vous ne programmez donc **aucun aiguillage**. Vous écrivez des règles, vous br
 
 Ce tableau est la règle d'arbitrage de tout le projet. Quand vous hésiterez sur l'endroit où écrire quelque chose, revenez-y.
 
-## Ce que cette architecture ne fait pas
+## Ce que cette architecture sait faire — et ce qui reste à prouver
 
-Trois choses, assumées et écrites noir sur blanc dès maintenant :
+Une liste SharePoint branchée en Knowledge dans la nouvelle expérience prend nativement en charge **la recherche en langage naturel** et **les requêtes analytiques et d'agrégation** : décomptes, filtres, synthèses, calculs simples, questions de type « combien de… » **[OFFICIEL, préversion]**.
 
-1. **Elle ne compte pas.** L'agent ne dira jamais « il y a 192 champs renommés ». Il montrera ce qu'il a trouvé et dira que la liste peut être incomplète.
-2. **Elle ne garantit pas l'exhaustivité.** Une recherche rend un sous-ensemble pertinent, pas la totalité des lignes correspondantes.
-3. **Elle ne croise pas plusieurs critères de façon prouvée.** Pour « quelles requêtes contiennent à la fois A et B », l'agent répondra à partir de ce qu'il a trouvé, en disant clairement que la couverture n'est pas garantie.
+Tous les cas d'usage du produit restent donc au périmètre, décomptes et croisements multi-critères compris. **Rien n'est retiré par hypothèse.**
 
-Le dossier `10_BACKLOG` détaille ces limites, les cas de test qu'elles retirent du périmètre, et ce qu'il faudrait ajouter si un jour elles devenaient bloquantes.
+Trois choses en découlent, à tenir ensemble :
+
+1. **L'agent a le droit de compter** — à partir des données de la liste, et en disant ce qu'il compte.
+2. **Il n'a jamais le droit d'estimer.** Un chiffre vient des données ou n'est pas donné. C'est la seule frontière absolue sur ce sujet.
+3. **La fiabilité réelle se mesure.** L'étape 06 confronte les réponses analytiques à des valeurs de référence connues (192 renommages, 188 `Primary KPI`, 2 requêtes couvrant `duty free` et `duty paid`…). Une capacité n'est déclarée non fiable qu'après avoir échoué de façon reproductible — et elle est alors inscrite dans `10_BACKLOG` **avec ses preuves**.
+
+Deux réserves documentées à garder en tête : la fonctionnalité est en **préversion**, et les questions portant sur la totalité d'une grande liste peuvent être limitées en débit ou très lentes **[OFFICIEL]**.
 
 ## Critères de fin d'étape
 
 - [ ] Je sais citer les trois composants et ce que chacun porte.
 - [ ] J'ai compris que l'agent n'a aucun outil et ne calcule rien.
-- [ ] J'ai lu les trois limites assumées ci-dessus.
+- [ ] J'ai compris que les décomptes sont autorisés depuis les données, jamais estimés, et validés par la mesure.
